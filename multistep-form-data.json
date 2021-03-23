@@ -1,0 +1,68 @@
+{
+    "1": {
+        "label" : "Importo",
+        "title" : "Che importo ti server?",
+        "subtitle"    : "Ti informiamo che questa soluzione agevolata di prestito non può essere concessa a coloro che non possono dimostrare una forma di reddito da lavoro (disoccupati, reddito di cittadinanza, pensione INAIL, etc.). Sono invece inclusi tutti pensionati, a partire da coloro che percepiscono una pensione minima di 650 euro al mese",
+        "fields" : [
+                    {   
+                        "id"    : "amount",
+                        "type"  : "radio",
+                        "datatype" : "number",
+                        "placeholder":"",
+                        "htmlattrs":"",
+                        "values" : 
+                        {
+                            "5000"  :  "5000 €",
+                            "10000" : "10000 €",
+                            "20000" : "20000 €",
+                            "30000" : "30000 €",
+                            "50000" : "50000 €"
+                        }
+                    },
+                    {
+                        "id"    : "amount",
+                        "type"  : "text",
+                        "datatype" : "number",
+                        "placeholder":"altro",
+                        "htmlattrs":
+                        {
+                            "pattern" :"[0-9]"
+                        },
+                        "values" :  
+                        {
+                            "" : ""
+                        }
+                    }
+                ]
+            
+        },
+    "2" :  {
+        "label" : "Attività",
+        "title" : "Attività",
+        "subtitle":"",
+        "fields" : [
+            {   
+                "id"    : "activity",
+                "type"  : "radio",
+                "datatype" : "text",
+                "placeholder":"",
+                "htmlattrs":"",
+                "values" : 
+                {
+                    "pensionato-inps"  :  "Pensionato INPS",
+                    "pensionato-altro--ente" : "Pensionato altro ente",
+                    "dipendente-noipa" : "Dipendente MoiPa",
+                    "dipendente-pubblico" : "Dipendente pubblico",
+                    "dipendente-statale-ministeriale" : "Dipendente statale / ministeriale",
+                    "dipendente-parastatale" : "Dipendente parastatale",
+                    "dipendente-postale" : "Ferroviere",
+                    "azienda-municipalizzata" : "Azienda Municipalizzata",
+                    "militare" : "militare",
+                    "dipendente-azienda-privata" : "Dipendente Azienda Privata",
+                    "lavoratore-autonomo" : "Lavoratore autonomo"
+                }
+            }
+        ]
+    }
+}
+    

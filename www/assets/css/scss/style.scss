@@ -1,13 +1,142 @@
+/* BOOTSTRAP */
+@import 'bootstrap';
+
 /* BASE */
 @import './base/reset';
 @import './base/variables';
 @import './base/typography';
-@import './base/core';
-
-
-/* TEMPLATE */
-
+@import './base/core'; 
+@import './responsive';
 
 /* HELPERS */
 @import './helpers/helpers';
 
+
+header
+{
+    background-color:#fff;
+    padding: 0 !important;
+
+    .logo-link
+    {
+        overflow: hidden;
+        display: block;
+        #mainlogo
+        {
+            padding:10px 0;
+            width:100%;
+            height: auto;
+        }
+    }
+    .mainmenu
+    {
+        text-align:right;
+        width:100%;
+        flex-direction: row !important;
+        justify-content: right;
+         
+        .mainmenu__navitem
+        {
+            padding: 0 20px; 
+
+            .mainmenu__navitem__innerlink
+            {
+                text-align:center;
+                text-transform: uppercase;
+                color: #000;
+                font-size: 13px;
+                font-family: "Lato";
+                font-weight: 500;
+            }
+            .mainmenu__navitem__innerlink:hover
+            {
+                opacity: 0.7;
+                text-decoration: none;   
+            }
+        }
+    }
+    #numeroverde
+    {
+        height: 116px;
+        background-color: #E7C700;
+        min-width:230px;
+        display:flex;
+        justify-content: center; 
+        
+
+        .numeroverde-img-cont
+        {
+            align-self: center;            
+        }
+        .numeroverde-details-cont 
+        {
+            align-self: center;   
+            padding: 0;
+            .testo
+            {
+                font-size:13px;
+                line-height: 10px;
+                display:block;
+                margin: 5px 0;                
+            }
+            .numero
+            {
+                display:block;   
+                font-size: 18px;
+                color: #fff;
+                font-weight: 700;
+            }
+        }
+
+    }
+}
+
+
+.container
+{
+    width:100%;
+    max-width: $media-desktop-max;
+    margin:0 auto;
+    
+}
+.uppercase
+{
+    text-transform: uppercase !important;
+}
+#form-top-section
+{
+    background: #e6e6e6 url("/images/testataLanding.png") no-repeat top center;
+    background-size: cover;
+    padding-bottom: 60px;
+
+    .titolo
+    {
+        display: flex;
+        flex-direction: column-reverse;
+
+        h1
+        {
+            font-size: 45px;
+            line-height: 1.2em;
+            font-weight: 600;
+            margin-top: 10px;
+            text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
+            color: #fff;
+        }
+        h2
+        {
+            font-size: 27px;
+            line-height: 25px;
+            font-weight: 600;
+            margin-top: 20px;
+            text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
+            color: #fff;
+
+            .yellow-txt
+            {
+                color: #E7C700;
+            }
+        }
+    }
+
+}  
