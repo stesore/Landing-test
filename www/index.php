@@ -1,3 +1,5 @@
+<?php require_once('functions.php'); ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -62,32 +64,15 @@
                             </div> 
                         </div>
                         <div class="col-md-5 col-sm-12 col-xs-12 text-center form">
-                            <form id="form-multi-step" style="min-height:600px">
-                                <div class="multi-step__wrapper">
-                                    <div class="row multi-step__count">
-                                        <div class="col-md-3" data-step="1">
-                                            <span class="step-number">1</span> 
-                                        </div>
-                                        <div class="col-md-3" data-step="2">
-                                            <span class="step-number">2</span> 
-                                        </div>
-                                        <div class="col-md-3" data-step="3">
-                                            <span class="step-number">3</span> 
-                                        </div>
-                                        <div class="col-md-3" data-step="4">
-                                            <span class="step-number">4</span> 
-                                        </div>
-                                    </div>
-                                    <div class="row multi-step__content" >
-                                        
-                                    </div>
-                            </form>     
+
+                            <?php echo multistep_forms("multistep-form-data"); ?>
+
+                            
                         </div>
                     </div>   
                 </div>
             </main>    
-            <!-- MAIN / -->
-            
+            <!-- MAIN / -->            
         </div>
         <!-- WRAP 1920px / -->
     </div>

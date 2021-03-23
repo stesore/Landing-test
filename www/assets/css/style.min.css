@@ -11315,3 +11315,65 @@ header #numeroverde .numeroverde-details-cont .numero {
   color: #E7C700;
 }
 
+.multi-step-forms {
+  margin: 60px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.multi-step-forms .formstep-count {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.multi-step-forms .formstep-count .step .label {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.multi-step-forms .formstep-count .step .num {
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+  display: block;
+  margin: 4px auto;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.multi-step-forms .formstep-count .step .num.active {
+  background: #fff;
+  color: #000;
+}
+
+.multi-step-forms .formstep-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.multi-step-forms .formstep-content .title {
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-size: 30px;
+  color: #000;
+}
+
+.multi-step-forms .formstep-content .subtitle {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 15px;
+  color: #6B767C;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+

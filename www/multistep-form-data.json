@@ -63,6 +63,62 @@
                 }
             }
         ]
+    },
+    "3" :  {
+        "label" : "Attività",
+        "title" : "Attività",
+        "subtitle":"",
+        "fields" : [
+            {   
+                "id"    : "activity",
+                "type"  : "radio",
+                "datatype" : "text",
+                "placeholder":"",
+                "htmlattrs":"",
+                "values" : 
+                {
+                    "pensionato-inps"  :  "Pensionato INPS",
+                    "pensionato-altro--ente" : "Pensionato altro ente",
+                    "dipendente-noipa" : "Dipendente MoiPa",
+                    "dipendente-pubblico" : "Dipendente pubblico",
+                    "dipendente-statale-ministeriale" : "Dipendente statale / ministeriale",
+                    "dipendente-parastatale" : "Dipendente parastatale",
+                    "dipendente-postale" : "Ferroviere",
+                    "azienda-municipalizzata" : "Azienda Municipalizzata",
+                    "militare" : "militare",
+                    "dipendente-azienda-privata" : "Dipendente Azienda Privata",
+                    "lavoratore-autonomo" : "Lavoratore autonomo"
+                }
+            }
+        ]
+    },
+    "4" :  {
+        "label" : "Attività",
+        "title" : "Attività",
+        "subtitle":"",
+        "fields" : [
+            {   
+                "id"    : "activity",
+                "type"  : "radio",
+                "datatype" : "text",
+                "placeholder":"",
+                "htmlattrs":"",
+                "values" : 
+                {
+                    "pensionato-inps"  :  "Pensionato INPS",
+                    "pensionato-altro--ente" : "Pensionato altro ente",
+                    "dipendente-noipa" : "Dipendente MoiPa",
+                    "dipendente-pubblico" : "Dipendente pubblico",
+                    "dipendente-statale-ministeriale" : "Dipendente statale / ministeriale",
+                    "dipendente-parastatale" : "Dipendente parastatale",
+                    "dipendente-postale" : "Ferroviere",
+                    "azienda-municipalizzata" : "Azienda Municipalizzata",
+                    "militare" : "militare",
+                    "dipendente-azienda-privata" : "Dipendente Azienda Privata",
+                    "lavoratore-autonomo" : "Lavoratore autonomo"
+                }
+            }
+        ]
     }
 }
     
