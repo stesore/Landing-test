@@ -11365,6 +11365,9 @@ header #numeroverde .numeroverde-details-cont .numero {
   font-weight: 300;
   font-size: 30px;
   color: #000;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .multi-step-forms .formstep-content .subtitle {
@@ -11375,5 +11378,49 @@ header #numeroverde .numeroverde-details-cont .numero {
   line-height: 22px;
   letter-spacing: 0.01em;
   font-weight: 400;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.multi-step-forms .formstep-content .field-container {
+  margin: 5px 0;
+}
+
+.multi-step-forms .formstep-content .field-container select,
+.multi-step-forms .formstep-content .field-container input[type=text],
+.multi-step-forms .formstep-content .field-container input[type=url],
+.multi-step-forms .formstep-content .field-container input[type=email],
+.multi-step-forms .formstep-content .field-container input[type=date] {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  font-size: 11px;
+  color: #000;
+}
+
+.multi-step-forms .formstep-content .field-container label + input[type=radio] {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: 100%;
+  padding: 10px;
+  margin: auto;
+  color: #000;
+  font-weight: normal;
+  font-size: 14px !important;
+}
+
+.multi-step-forms .formstep-content .field-container input[type=radio] {
+  display: none !important;
+}
+
+.multi-step-forms .formstep-content .field-container .col-12 {
+  clear: both;
+  float: none;
 }
 
