@@ -54,7 +54,7 @@
             <!-- HEADER STICKY / -->    
             <!-- MAIN -->    
             <main>
-                <div class="container-fluid" id="form-top-section">
+                <div class="container-fluid h-100" id="form-top-section">
                     <div class="row container"> 
                         <div class="col-md-7 col-sm-12 col-xs-12 titolo">
                             <div class="titlesdiv"> 

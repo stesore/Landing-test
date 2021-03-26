@@ -58,7 +58,7 @@ header
     #numeroverde
     {
         height: 116px;
-        background-color: #E7C700;
+        background-color: $yellow;
         min-width:230px;
         display:flex;
         justify-content: center; 
@@ -90,10 +90,32 @@ header
 
     }
 }
-
-
-.container
+/*
+.stepcontent .fields
 {
+    width:100%; 
+    display:block;
+    clear:both;
+    float:none;
+    overflow: hidden;
+}
+
+.stepcontent[data-step="1"] .fields
+{
+    display: flex;
+    flex-wrap:  wrap;
+    flex-direction: column-reverse;
+    align-items: flex-start; 
+    
+    .field-container
+    {
+        max-width:100%;
+        flex: 1 1 50%; 
+    }
+}
+*/
+.container
+{ 
     width:100%;
     max-width: $media-desktop-max;
     margin:0 auto;
@@ -103,6 +125,9 @@ header
 {
     text-transform: uppercase !important;
 }
+
+
+
 #form-top-section
 {
     background: #e6e6e6 url("/images/testataLanding.png") no-repeat top center;
@@ -134,26 +159,43 @@ header
 
             .yellow-txt
             {
-                color: #E7C700;
+                color: $yellow;
             }
         }
     }
 
 }
-
+#form-top-section > .row
+{
+    padding:0;   
+}
+.form{
+    padding:0;   
+}
 .multi-step-forms
 {
-    margin: 60px 0;
+    margin: 30px 0;
     width: 100%;
     max-width: 400px;
-
+    float: right;
+    
     .formstep-count
     {
         overflow: hidden;
         margin-bottom: 20px; 
 
-        .step 
+        .step-count 
         {
+            &.active
+            {
+                .num
+                {
+                    background-color: #fff;
+                    color:#000
+                }
+                
+            }
+
             .label
             {
                 display:block;
@@ -188,76 +230,215 @@ header
 
     .formstep-content
     {
-       background-color: rgba(255,255,255,0.9);
-       padding: 20px;
-       border-radius: 5px;
-       text-align: center;
+        min-height: 550px;
+        padding:0;
+        margin:0;
+        text-align: center;
+        
 
-       .title
-       {
-            margin-bottom: 15px;
-            font-weight: 300;
-            font-size: 30px;
-            color: #000; 
-            display:block;
-            width:100%;
-            text-align: center;
-       }
-       .subtitle
-       {
-            margin-bottom: 20px;
-            font-size: 14px;
-            line-height: 15px;
-            color: #6B767C;
-            line-height: 22px;
-            letter-spacing: 0.01em;
-            font-weight: 400;
-            display:block;
-            width:100%; 
-            text-align: center;
-       } 
-       .field-container
-       {
-            margin:5px 0;
+        .stepcontent
+        {
+            display:none;
 
-           select, input[type=text],input[type=url], input[type=email], input[type=date]
-           {
-               width: 100%;
-               border-radius: 5px;
-               padding: 10px;
-               border: 1px solid #dfdfdf;
-               font-size: 11px;
-               color: #000;
-           }
-
-           
-
-           label  + input[type=radio]{
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(0, 0, 0, 0.2);
-                border-radius: 5px;
-                height: 100%;
-                padding: 10px;
-                margin: auto;
-                color: #000;
-                font-weight: normal;
-                font-size: 14px !important;
+            &.active{
+                display: block;
             }
-            input[type="radio"]
+            
+            &[data-step="1"] input[type="text"],
+            &[data-step="1"] input[type="text"]
             {
-                display: none !important; 
+                text-transform: uppercase;
+            } 
+
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.9);
+            margin:20px 0;
+       
+            .step-nav-container
+            {
+                margin-top:20px;
+                clear: both;
+                width: 100%;
+                overflow: hidden;
+                button
+                {
+                    font-weight: 900;
+                    color: #fff;
+                    text-align: center;
+                    padding: 20px;
+                    border: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size:13px;
+                    
+
+                    &[data-dir="next"]
+                    {
+                        background-color: $darkbtn;
+                        float:right;
+                    }
+                    &[data-dir="prev"]
+                    {
+                        background-color: $lightbtn;
+                        float:left;
+                    }
+                    &.col-6
+                    {
+                        width: calc(50% - 10px);
+                    }
+                }
+                input[type=submit]
+                {
+                    font-weight: 900;
+                    color: #fff;
+                    text-align: center;
+                    padding: 20px;
+                    border: none;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    font-size:13px;
+                    background-color: $primary;
+                    width: calc(50% - 10px);
+                }
             }
-           .col-12
-           {
-               clear: both;
-               float:none;
+            
+            
+            .title
+            {
+                    margin-bottom: 15px;
+                    font-weight: 300;
+                    font-size: 30px;
+                    color: #000; 
+                    display:block;
+                    width:100%;
+                    text-align: center;
+            }
+            .subtitle
+            {
+                    margin-bottom: 20px;
+                    font-size: 14px;
+                    line-height: 15px;
+                    color: #6B767C;
+                    line-height: 22px;
+                    letter-spacing: 0.01em;
+                    font-weight: 400;
+                    display:block;
+                    width:100%; 
+                    text-align: center;
+            } 
+            .note
+            {
+                font-size: 13px;
+                text-align: center;
+                display:block;
+                text-align: center;
+                margin-top: 20px;
+            }
 
-           }
+            .field-container
+            {
+                margin:5px 0;
+                padding: 0 5px;
 
-       }
+                select, input[type=text],input[type=url], input[type=email], input[type=date],input[type=tel]
+                {
+                    width: 100%;
+                    border-radius: 5px;
+                    padding: 10px;
+                    border: 1px solid #dfdfdf;
+                    font-size: 11px;
+                    color: #000;
+                }
+                input[type="checkbox"]
+                {
+                    margin-right: 5px;
+                    float:left;
+
+                    + label
+                    {                        
+                        padding-left:20px;
+                        font-size:11px;
+                        line-height: 14px;
+                        text-align: left;
+                        display: block;                        
+                        color:#6B767C;
+                    }
+                }
+
+                input[type="date"]
+                {
+                        text-align:center;
+                }
+                input[type="text"]
+                {
+                        text-align:center;                        
+                        line-height: 22px;
+                        font-size: 11px; 
+                        padding: 10px;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        background: transparent;
+                }
+                input[type="tel"]
+                {
+                        text-align:center;
+                        line-height: 22px;
+                        font-size: 11px;
+                        padding: 10px;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        background: transparent;
+
+                }
+                input[type="email"]
+                {
+                        text-align:center;
+                        line-height: 22px;
+                        font-size: 11px;
+                        padding: 10px;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                }
+                    input[type="radio"]
+                    {
+                        display: none !important;   
+                               
+                        
+                        + label{ 
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                            border-radius: 5px;
+                            height: 100%;
+                            padding: 10px;
+                            margin: auto;
+                            color: #000;
+                            font-weight: normal;
+                            font-size: 14px !important;
+                            line-height: 22px; 
+                        }
+                        &:checked
+                        {
+                            + label
+                            { 
+                                background-color: $primary;
+                            }
+                        }
+                    }
+                    
+                .col-12
+                {
+                    clear: both;
+                    float:none;
+
+                }
+
+            }
+        }
     }
-    
 }
+
+input, button, button:focus {
+    outline: 0;
+}
+

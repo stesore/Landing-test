@@ -1,48 +1,49 @@
 {
     "1": {
         "label" : "Importo",
-        "title" : "Che importo ti server?",
+        "title" : "Che importo ti serve?",
         "subtitle"    : "Ti informiamo che questa soluzione agevolata di prestito non può essere concessa a coloro che non possono dimostrare una forma di reddito da lavoro (disoccupati, reddito di cittadinanza, pensione INAIL, etc.). Sono invece inclusi tutti pensionati, a partire da coloro che percepiscono una pensione minima di 650 euro al mese",
         "notes" : "",        
         "fields" : [
+            
             {   
                 "id"    : "amount",
                 "type"  : "radio",
                 "datatype" : "number",                
                 "htmlattrs":[],
-                "col": "6",
+                "col": "6", 
                 "values" : 
                 [
                     {
-                        "key"   : "5000",
-                        "value" : "5000€"
+                        "key"   : "5000€",
+                        "value" : "5000"
                     },
                     {
-                        "key"   : "10000",
-                        "value" : "10000€"
+                        "key"   : "10000€",
+                        "value" : "10000"
                     },
                     {
-                        "key"   : "20000",
-                        "value" : "20000€"
+                        "key"   : "20000€",
+                        "value" : "20000"
                     },
                     {
-                        "key"   : "30000",
-                        "value" : "30000€"
+                        "key"   : "30000€",
+                        "value" : "30000"
                     },
                     {
-                        "key"   : "50000",
-                        "value" : "50000€"
+                        "key"   : "50000€",
+                        "value" : "50000"
                     }
                 ]                
             },
             {
-                "id"    : "amount",
+                "id"    : "amount_custom",
                 "type"  : "text",
                 "datatype" : "number",                
                 "htmlattrs":
                 [{
                     "key"   : "pattern",
-                    "value" : "[0-9]"
+                    "value" : "[0-9]{4,}"
                  },
                  {
                     "key"   : "placeholder",
@@ -55,7 +56,7 @@
                 {
                     "" : ""
                 }
-            }
+            }            
         ]            
         },
     "2" :  {
@@ -74,52 +75,52 @@
                 "values" : 
                 [
                     {
-                        "key"   : "pensionato-inps",
-                        "value" : "Pensionato INPS"
+                        "key"   : "Pensionato INPS",
+                        "value" : "pensionato-inps"
                     },
                     {
-                        "key"   : "pensionato-altro--ente",
-                        "value" : "Pensionato altro ente"
+                        "key"   : "Pensionato altro ente",
+                        "value" : "pensionato-altro--ente"
                     },
                     {
-                        "key"   : "dipendente-noipa",
-                        "value" : "Dipendente MoiPa"
+                        "key"   : "Dipendente MoiPa",
+                        "value" : "dipendente-noipa"
                     },
                     {
-                        "key"   : "dipendente-pubblico",
-                        "value" : "Dipendente pubblico"
+                        "key"   : "Dipendente pubblico",
+                        "value" : "dipendente-pubblico"
                     },
                     {
-                        "key"   : "dipendente-statale-ministeriale",
-                        "value" : "Dipendente statale / ministeriale"
+                        "key"   : "Dipendente statale / ministeriale",
+                        "value" : "dipendente-statale-ministeriale"
                     },
                     {
-                        "key"   : "dipendente-parastatale",
-                        "value" : "Dipendente parastatale"
+                        "key"   : "Dipendente parastatale",
+                        "value" : "dipendente-parastatale"
                     },
                     {
-                        "key"   : "dipendente-postale",
-                        "value" : "Dipendente Postale"
+                        "key"   : "Dipendente Postale",
+                        "value" : "dipendente-postale"
                     },
                     {
-                        "key"   : "ferroviere",
-                        "value" : "Ferroviere"
+                        "key"   : "Ferroviere",
+                        "value" : "ferroviere"
                     },
                     {
-                        "key"   : "azienda-municipalizzata",
-                        "value" : "Azienda Municipalizzata"
+                        "key"   : "Azienda Municipalizzata",
+                        "value" : "azienda-municipalizzata"
                     },
                     {
-                        "key"   : "militare",
-                        "value" : "Militare"
+                        "key"   : "Militare",
+                        "value" : "militare"
                     },
                     {
-                        "key"   : "dipendente-azienda-privata",
-                        "value" : "Dipendente Azienda Privata"
+                        "key"   : "Dipendente Azienda Privata",
+                        "value" : "dipendente-azienda-privata"
                     },
                     {
-                        "key"   : "lavoratore-autonomo",
-                        "value" : "Lavoratore autonomo"
+                        "key"   : "Lavoratore autonomo",
+                        "value" : "lavoratore-autonomo"
                     }
                 ]
             }
@@ -137,13 +138,7 @@
                 "label" : "",
                 "datatype" : "",
                 "col": "12",
-                "htmlattrs":
-                [
-                    {
-                        "key"   : "required",
-                        "value" : "required"
-                    }
-                ],
+                "htmlattrs":[],
                 "values" : 
                 [
                     {  
@@ -271,7 +266,7 @@
                 "values" : ""
             },
             {   
-                "id"    : "Cognome",
+                "id"    : "cognome",
                 "type"  : "text",
                 "label" : "",
                 "datatype" : "text",
@@ -284,13 +279,13 @@
                     },
                     {
                         "key"   : "placeholder",
-                        "value" : "Nome"
+                        "value" : "Cognome"
                     }
                 ],
                 "values" : ""
             },
             {   
-                "id"    : "Email",
+                "id"    : "email",
                 "type"  : "email",
                 "label" : "",
                 "datatype" : "",  
@@ -309,8 +304,8 @@
                 "values" : ""
             },
             {   
-                "id"    : "Telefono",
-                "type"  : "text",
+                "id"    : "telefono",
+                "type"  : "tel",
                 "label" : "",
                 "datatype" : "",                
                 "col": "6",  
@@ -318,7 +313,7 @@
                 [
                     {
                         "key"   : "pattern",
-                        "value" : "[0-9]"
+                        "value" : "[0-9]{6,}"
                     },
                     {
                         "key"   : "required",
@@ -332,7 +327,7 @@
                 "values" : ""
             },
             {   
-                "id"    : "Provincia",
+                "id"    : "provincia",
                 "type"  : "select",
                 "label" : "",
                 "datatype" : "",
@@ -465,9 +460,15 @@
                 "label" : "L'Utente dichiara di aver preso visione dell' informativa resa da parte di Gruppo Santamaria S.p.a ai sensi degli articoli 13 e 14 del Regolamento generale UE sulla protezione dei dati GDPR e scaricabile dal presente sito nella sezione <a href='https://www.iubenda.com/privacy-policy/39306667/legal' target='_blank'>Privacy</a>.",
                 "datatype" : "",
                 "col": "12",
-                "htmlattrs":[],
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    }
+                ],
                 "values" : ""
-            },
+            }, 
             {   
                 "id"    : "privacy2",
                 "type"  : "checkbox",
