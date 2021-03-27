@@ -1,9 +1,5 @@
 <?php
 
-
-
-mail("sore87@gmail.com","Richiesta prestito prestitifaidate","Messaggio inviato correttamente");
-
 $error = array();
 $ajax_json_res = array();
 
@@ -24,12 +20,19 @@ $provincia = filter_var($_POST['provincia'],FILTER_SANITIZE_STRING);
 $privacy_1 = filter_var($_POST['privacy1'],FILTER_SANITIZE_STRING);
 $privacy_2 = filter_var($_POST['privacy2'],FILTER_SANITIZE_STRING);
 
+if(empty($privacy_2))
+    $privacy_2 = "Non accettata";
 
-$table_init="<table width='600' align='center' style='border:1px solid #e6e6e6;'>";
+$table_init="<html>
+                <head>
+                <title>La tua richiesta a PrestitiFaiDaTe</title>
+                </head>
+                <style>* {font-family: sans-serif; color:#333; text-align: center;}</style>
+                <body><table width='600' align='center' style='border:1px solid #e6e6e6;'>";
 $table_init.="<tr align='center'>
                 <td colspan='2' align='center'>
                     <a href='https://www.prestitifaidate.it/'>
-                        <img src='images/logo.svg' alt='Prestiti fai da te - Logo' style='margin:30px auto;' width='217' height='86' /> 
+                        <img src='https://www.prestitifaidate.it/images/icons/logo.svg' alt='Prestiti fai da te - Logo' style='margin:30px auto;' width='217' height='86' /> 
                     </a> 
                 </td>
             <tr>";
@@ -85,11 +88,11 @@ if(empty($provincia))
     $errori['provincia'] = "Provincia non valida";
 else $table_body.="<tr><td>Provincia:</td><td><strong>$provincia</strong></td>";
 
-if($privacy_1!="on")
+if(empty($privacy_1) || $privacy_1!="privacy1_accettata")
     $errori['privacy'] = "Devi accettare l'informativa sulla privacy per poter procedere.";
 else $table_body.="<tr><td>Privacy:</td><td><strong>$privacy_1</strong></td>";
 
-$table_body.="<tr><td>Privacy opzionale:</td><td><strong>$privacy_1</strong></td>";
+$table_body.="<tr><td>Privacy opzionale:</td><td><strong>$privacy_2</strong></td>";
 
 $table_close="
             <tr align='center'><td colspan='2' align='center'><ul class='text-secondary' style='color: #000000;'>
@@ -99,7 +102,7 @@ $table_close="
             <li>Agente in Attività Finanziaria Avvera S.p.A. - Gruppo Bancario Credito Emiliano – OAM n. A 107</li>
             <li>Email:  servizioclienti@prestitifaidate.it <span style='font-weight: 600; font-size: 15px'><a target='_blank' style='text-decoration: underline; color: #000000;' href='https://servizi2.inps.it/servizi/cessionequinto/Pages/GestEntiConvenzionati.aspx'>Convenzione Inps</a>  |   <a target='_blank' style='text-decoration: underline; color: #000000;' href='https://noipa.mef.gov.it/cl/'>Convenzione Noipa</a></span></li>
             </ul><td></tr> 
-</table>";
+</table></body></html>";
 
 if($ajax) // la richeista arriva via ajax
 {
@@ -138,29 +141,33 @@ if($ajax) // la richeista arriva via ajax
 }
 
 // gestisco il form via PHP
+else {
+    if(empty($errori)){
 
-if(empty($errori)){
 
-
-   if(invia_email($email,"Richiesta prestito prestitifaidate", $table_init.$table_body.$table_close))
-         echo "<h1 id='invio_email corretto'>Email inviata correttamente</h1>";
-    else echo "<h1 id='invio_email errore'>Errore invio email, riprova tra qualche minuto.</h1>";
-
-    
+        if(invia_email($email,"Richiesta prestito prestitifaidate", $table_init.$table_body.$table_close))
+              echo "<h1 id='invio_email corretto'>Email inviata correttamente</h1>";
+         else echo "<h1 id='invio_email errore'>Errore invio email, riprova tra qualche minuto.</h1>";
+     
+         
+     }
+     else
+     {
+         echo "<div id='esito_form'>";
+             echo "<h1>Errore nella compilazione dei dati.</h1>";
+             echo "<p>Di seguito i dettagli.</p>";
+             echo "<dl>";
+                 foreach($errori as $campo => $mex)
+                     echo "<dt>$campo</dt><dd>$mex</dd>";
+             echo "</dl>";
+         echo "</div>";
+     }
 }
-else
-{
-    echo "<div id='esito_form'>";
-        echo "<h1>Errore nella compilazione dei dati.</h1>";
-        echo "<p>Di seguito i dettagli.</p>";
-        echo "<dl>";
-            foreach($errori as $campo => $mex)
-                echo "<dt>$campo</dt><dd>$mex</dd>";
-        echo "</dl>";
-    echo "</div>";
-}
+
 
 function invia_email($email, $oggetto, $corpo)
 {
-    return mail($email,$oggetto, $corpo);
+    error_log("invio_email");
+    $headers = array('MIME-Version: 1.0', 'Content-type: text/html; charset=utf-8');
+    return mail($email,$oggetto,$corpo, implode("\r\n", $headers));
 }

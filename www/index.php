@@ -620,7 +620,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <a data-toggle="collapse" id="accordion-toggle" data-parent="#accordion" href="#collapseOne" class="">
-                                            <h4 class="panel-title" style="color:#6B767C;">* NOTE DI TRASPARENZA 2021 <span style="float:right;" id="arrow-accordion"><img src="images/down-arrow.svg" id="accordion-arrow" alt=""></span></h4>
+                                            <h4 class="panel-title" style="color:#6B767C;">* NOTE DI TRASPARENZA 2021 <span style="float:right;" id="arrow-accordion"><img src="https://www.prestitifaidate.it/images/icons/down-arrow.svg" id="accordion-arrow" alt=""></span></h4>
                                         </a>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse in">

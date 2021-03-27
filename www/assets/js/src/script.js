@@ -4,37 +4,47 @@ var $ = jQuery = require( "jquery" );
 $(function(){
 
     $('.multistep-form').attr('novalidate',true);
+
     $(document).on('click tap keydown','.step-nav-container button[data-dir]', {} ,function(e)
     {
-        const step_num = $(this).closest('.multistep-form').find('.stepcontent').length;
+        const formid = $(this).attr("data-form");
+        const step_num = $(formid).find('.stepcontent').length;
         const direction = $(this).attr("data-dir");
         let current_step = $(this).parent().attr("data-current-step");
         let target_step  = $(this).attr("data-target");
 
         if( direction=="submit" )
         {
-          has_validation(current_step);
+          has_validation(current_step, formid);
         }
         if(direction=="prev" && target_step == (step_num - 1))
         {
-            $(this).closest('.multistep-form').attr('novalidate',true);            
+            $(`#${formid}`).attr('novalidate',true);            
         }
-        if(direction=="prev" || (direction=="next" && has_validation(current_step)))
+        if(direction=="prev" || (direction=="next" && has_validation(current_step,formid)))
         {
-          show_step(target_step , current_step);
+          show_step(target_step , current_step, formid);
         }
     });
 
-    $(document).on('click tap change keydown','.multistep-form input[name="amount_custom"]', {} ,function(e)
+    $(document).on('click tap change keydown','input[name="amount_custom"]', {} ,function(e)
     {
-        $(this).closest('.fields').find('input[type="radio"]').prop("checked", false);        
+        const formid = $(this).attr("form");
+        $(`#${formid}`).find('.fields').find('input[type="radio"]').prop("checked", false);        
     });
 
-    $(document).on('focus','.multistep-form #data_assunzione', {} ,function(e)
+    $(document).on('click tap keydown','input[name="amount"]', {} ,function(e)
     {
+        const formid = $(this).attr("form");
+        $(`#${formid}`).find('.fields').find('input[name="amount_custom"]').val("");        
+    });
+
+    $(document).on('focus','#multistep-form-data1_data_assunzione, #multistep-form-data2_data_assunzione', {} ,function(e)
+    {
+        const formid = $(this).attr("form");
         $(this).attr('type',"date");
     });
-    $(document).on('change blur','.multistep-form #data_assunzione', {} ,function(e)
+    $(document).on('change blur','#multistep-form-data1_data_assunzione, multistep-form-data2_data_assunzione', {} ,function(e)
     {
         if($(this).val()=="")
         {
@@ -42,49 +52,63 @@ $(function(){
         }
     });
 
-    $(document).on('click tap keydown','.multistep-form input[name="amount"]', {} ,function(e)
+    
+
+    function invia_email(e, formobj, formid)
     {
-        $(this).closest('.fields').find('input[name="amount_custom"]').val("");        
-    });
+          e.preventDefault();
+          let privacy1="";
+          if(formobj.find("input[name=privacy1]").is(":checked"))
+            privacy1="privacy1_accettata"; 
 
-    $(document).on('submit','.multistep-form', {} ,function(e)
-    {
-        e.preventDefault();
+          let privacy2="";
+            if(formobj.find("input[name=privacy2]").is(":checked"))
+              privacy2="privacy2_accettata"; 
 
-        let data={
-        "ajax" : 1,  
-        "amount" : $(this).find('input[name=amount]:checked').val(),
-        "amount_custom" : $(this).find('#amount_custom').val(),
-        "activity" : $(this).find('input[name=activity]:checked').val(),
-        "contratto" : $(this).find('#contratto').val(),
-        "data_assunzione" : $(this).find('#data_assunzione').val(),
-        "numero_mensilita" : $(this).find('#numero_mensilita').val(),
-        "reddito_mensile_medio" : $(this).find('#reddito_mensile_medio').val(),
-        "nome" : $(this).find('#nome').val(),
-        "cognome" : $(this).find('#cognome').val(),
-        "email" : $(this).find('#email').val(),
-        "telefono" : $(this).find('#telefono').val(),
-        "provincia" : $(this).find('#provincia').val(),
-        "privacy1" : $(this).find('#privacy1').val(),
-        "privacy2" : $(this).find('#privacy2').val()
-      }
 
-        //console.log(data);
-        //TODO controllare validazione di ogni step
+          let current_step =   formobj.find(".stepcontent.active").attr("data-step");
+              
+          let data={
+          "ajax" : 1,  
+          "amount" : formobj.find('input[name=amount]:checked').val(),
+          "amount_custom" : formobj.find('input[name=amount_custom]').val(),
+          "activity" : formobj.find('input[name=activity]:checked').val(),
+          "contratto" : formobj.find('select[name=contratto]').val(),
+          "data_assunzione" : formobj.find('input[name=data_assunzione]').val(),
+          "numero_mensilita" : formobj.find('select[name=numero_mensilita]').val(),
+          "reddito_mensile_medio" : formobj.find('select[name=reddito_mensile_medio]').val(),
+          "nome" : formobj.find('input[name=nome]').val(),
+          "cognome" : formobj.find('input[name=cognome]').val(),
+          "email" : formobj.find('input[name=email]').val(),
+          "telefono" : formobj.find('input[name=telefono]').val(),
+          "provincia" : formobj.find('select[name=provincia]').val(),
+          "privacy1" : privacy1,
+          "privacy2" : privacy2
+        }
 
-        $.ajax({
-          method: "POST",
-          url: "multi-step-form-res.php",
-          dataType: 'JSON',
-          data: data,          
-          success: function( response )
+          
+
+          //TODO controllare validazione di ogni step
+          if(has_validation(current_step,formid))
           {
-              alert(response['status']+" -- "+response['mex']);
-              if(response['status']==400)
-                console.table(response['errors']);
-          }          
-        })          
-    });
+            $.ajax({
+              method: "POST",
+              url: "multi-step-form-res.php",
+              dataType: 'JSON',
+              data: data,          
+              success: function( response )
+              {
+                  alert(response['status']+" -- "+response['mex']);
+                  if(response['status']==400)
+                    console.table(response['errors']);
+              }          
+            })  
+          }
+    }
+
+    // da mettere id del form e non LA CLASSE !
+    $(document).on('submit','#multistep-form-data1', {} ,(e)=>{invia_email(e, $(this), "multistep-form-data1")});
+    $(document).on('submit','#multistep-form-data2', {} ,(e)=>{invia_email(e, $(this), "multistep-form-data2")});
     
     
     /* SECTION PRESTITI TABS */
@@ -109,23 +133,27 @@ $(function(){
 
 
 // mostro lo step da mostrare il base al tasto cliccato, e nascondo quello corrente
-function show_step(steptoshow,steptohide)
+function show_step(steptoshow,steptohide, formid)
 {
     let direction = ( (parseInt(steptoshow) - parseInt(steptohide)  > 0) ? "left" : "right" );
-    $(`.stepcontent[data-step=${steptohide}]`).fadeOut('fast', ()=>{ 
-            $(`.stepcontent[data-step=${steptoshow}]`).fadeIn('fast');  
-            $(`.step-count[data-n=${steptoshow}]`).addClass('active');  
-            $(`.step-count[data-n=${steptohide}]`).removeClass('active');  
-        } );
+    $(`#${formid} .stepcontent[data-step=${steptohide}]`).fadeOut('fast', ()=>{ 
+            $(`#${formid}  .stepcontent[data-step=${steptoshow}]`).fadeIn('fast').addClass('active');  
+            $(`#${formid}  .step-count[data-n=${steptoshow}]`).addClass('active');  
+            $(`#${formid}  .step-count[data-n=${steptohide}]`).removeClass('active');  
+        } ).removeClass('active');
 }
-function has_validation(stepnum)
+function has_validation(stepnum, formid)
 {
-  const currentstep = $(`.stepcontent[data-step=${stepnum}]`);
-  const form = currentstep.closest('.multistep-form');
+
+  console.log("valido step ",stepnum," di ",formid);
+
+  const currentstep = $(`#${formid} .stepcontent[data-step=${stepnum}]`);
+
+  const form = $(`#${formid}`);
   const errordiv = currentstep.find('.error');
   let activity, amount, numero_mensilita_item, reddito_mensile_medio_item, data_assunzione ;
   
-
+  console.log("currentstep",currentstep);
   
     switch(stepnum) {        
 
@@ -252,10 +280,10 @@ function has_validation(stepnum)
         break;
 
         case "4":
-
-          $(currentstep).closest('.multistep-form').removeAttr('novalidate');
-          /*
           let nome_valid, cognome_valid, email_valid, telefono_valid, provincia_valid, privacy1_valid;
+          let idform = $(currentstep).attr("data-form");
+
+          // $("#multistep-form-data"+idform).removeAttr('novalidate');
 
           nome_item = currentstep.find('input[name="nome"]');
           cognome_item = currentstep.find('input[name="cognome"]');
@@ -263,6 +291,7 @@ function has_validation(stepnum)
           telefono_item = currentstep.find('input[name="telefono"]');
           provincia_item = currentstep.find('select[name="provincia"]');
           privacy1_item = currentstep.find('input[name="privacy1"]');
+          privacy1_lbl = currentstep.find(`label[for="${formid}_privacy1"]`);
           
           if(nome_item.val()=="")
           {
@@ -319,20 +348,19 @@ function has_validation(stepnum)
             provincia_item.removeClass("input_validation_error");
           }
 
-          if(privacy1_item.val()=="")
+          if(!privacy1_item.is(":checked"))
           {
             privacy1_valid = false;
-            privacy1_item.addClass("input_validation_error");
+            privacy1_lbl.addClass("input_validation_error");
           }
           else
           {
             privacy1_valid = true;
-            privacy1_item.removeClass("input_validation_error");
+            privacy1_lbl.removeClass("input_validation_error");
           }
           
           return (nome_valid && cognome_valid && email_valid && telefono_valid && provincia_valid && privacy1_valid)
-          */
-          return true;
+          
           break;
 
         default:

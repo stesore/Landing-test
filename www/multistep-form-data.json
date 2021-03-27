@@ -474,6 +474,10 @@
                     {
                         "key"   : "required",
                         "value" : "required"
+                    },
+                    {
+                        "key"   : "value",
+                        "value" : "privacy1_accettata"
                     }
                 ],
                 "values" : ""
@@ -484,8 +488,14 @@
                 "label" : "L'Utente presta il proprio libero ed esplicito consenso per il trattamento di cui all'informativa (dati forniti volontariamente dall'utente).",
                 "datatype" : "",                
                 "col": "12",
-                "htmlattrs":[],
-                "values" : ""
+                "htmlattrs":
+                [                    
+                    {
+                        "key"   : "value",
+                        "value" : "privacy2_accettata"
+                    }
+                ],
+                "values" : "privacy2_accettata"
             }
         ]
     }
