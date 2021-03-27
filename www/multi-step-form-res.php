@@ -5,21 +5,24 @@
 mail("sore87@gmail.com","Richiesta prestito prestitifaidate","Messaggio inviato correttamente");
 
 $error = array();
+$ajax_json_res = array();
 
-$amount = intval($_GET['amount']);
-$amount_custom = intval($_GET['amount_custom']);
-$activity = ucwords(str_replace("-"," ",filter_var($_GET['activity'],FILTER_SANITIZE_STRING)));
-$contratto = ucwords(filter_var($_GET['contratto'],FILTER_SANITIZE_STRING));
-$data_assunzione = date("d/m/Y", strtotime((filter_var($_GET['data_assunzione'],FILTER_SANITIZE_STRING))));
-$numero_mensilita = intval($_GET['numero_mensilita']);
-$reddito_mensile_medio = intval($_GET['reddito_mensile_medio']);
-$nome = filter_var($_GET['nome'],FILTER_SANITIZE_STRING);
-$cognome = filter_var($_GET['cognome'],FILTER_SANITIZE_STRING);
-$email = filter_var($_GET['email'],FILTER_VALIDATE_EMAIL);
-$telefono = filter_var($_GET['telefono'],FILTER_SANITIZE_STRING);
-$provincia = filter_var($_GET['provincia'],FILTER_SANITIZE_STRING);
-$privacy_1 = filter_var($_GET['privacy1'],FILTER_SANITIZE_STRING);
-$privacy_2 = filter_var($_GET['privacy2'],FILTER_SANITIZE_STRING);
+$ajax = intval($_POST['ajax']);
+$amount = intval($_POST['amount']);
+$amount_custom = intval($_POST['amount_custom']);
+$activity_raw = filter_var($_POST['activity'],FILTER_SANITIZE_STRING);
+$activity = ucwords(str_replace("-"," ",$activity_raw));
+$contratto = ucwords(filter_var($_POST['contratto'],FILTER_SANITIZE_STRING));
+$data_assunzione = date("d/m/Y", strtotime((filter_var($_POST['data_assunzione'],FILTER_SANITIZE_STRING))));
+$numero_mensilita = intval($_POST['numero_mensilita']);
+$reddito_mensile_medio = intval($_POST['reddito_mensile_medio']);
+$nome = filter_var($_POST['nome'],FILTER_SANITIZE_STRING);
+$cognome = filter_var($_POST['cognome'],FILTER_SANITIZE_STRING);
+$email = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
+$telefono = filter_var($_POST['telefono'],FILTER_SANITIZE_STRING);
+$provincia = filter_var($_POST['provincia'],FILTER_SANITIZE_STRING);
+$privacy_1 = filter_var($_POST['privacy1'],FILTER_SANITIZE_STRING);
+$privacy_2 = filter_var($_POST['privacy2'],FILTER_SANITIZE_STRING);
 
 
 $table_init="<table width='600' align='center' style='border:1px solid #e6e6e6;'>";
@@ -46,12 +49,12 @@ if(empty($activity))
     $errori['attività'] = "Campo obbligatorio";
 else $table_body.="<tr><td>Attività:</td><td><strong>$activity</strong></td>";
 
-if(empty($contratto))
-    $errori['contratto'] = "Campo obbligatorio";
+if(empty($contratto) && ($activity_raw!="pensionato-inps" && $activity_raw!="pensionato-altro-ente" ))
+    $errori['contratto'] = "Campo obbligatorio se non sei un pensionato";
 else $table_body.="<tr><td>Contratto:</td><td><strong>$contratto</strong></td>";
 
-if(!$data_assunzione)
-    $errori['assunzione'] = "Data non valida";
+if(!$data_assunzione && ($activity_raw!="pensionato-inps" && $activity_raw!="pensionato-altro-ente" ))
+    $errori['assunzione'] = "Data obbligatoria se non sei un pensionato";
 else $table_body.="<tr><td>Data assunzione:</td><td><strong>$data_assunzione</strong></td>";
 
 if(!$numero_mensilita || ($numero_mensilita < 12 && $numero_mensilita > 15))
@@ -98,12 +101,52 @@ $table_close="
             </ul><td></tr> 
 </table>";
 
+if($ajax) // la richeista arriva via ajax
+{
+    if(empty($errori)) // non ci sono errori php
+    {
+        if(invia_email($email,"Richiesta prestito prestitifaidate", $table_init.$table_body.$table_close))
+        {
+            error_log("Inviato email con testo: ". $table_init.$table_body.$table_close);
+            $ajax_res_status = 200;
+            $ajax_res_mex = "E-mail inviata correttamente";
+            $ajax_res_errors = [];
+        }
+        else
+        {
+            $ajax_res_status = 400;
+            $ajax_res_mex = "Errore durante l'invio dell'email";
+            $ajax_res_errors = [];
+        }
+    }
+    else // sono presenti errori nella validazione del modulo
+    {
+        $ajax_res_status = 400;
+        $ajax_res_mex = "Sono presenti alcuni errori:";
+        $ajax_res_errors = $errori;       
+    }
+
+    // preparo l'array da convertire in JSON per la risposta
+    $ajax_json_res = array(
+        "status" => $ajax_res_status,
+        "mex"    => $ajax_res_mex,
+        "errors"  => $ajax_res_errors
+    );
+
+    // ritorno il JSON
+    exit(json_encode($ajax_json_res));
+}
+
+// gestisco il form via PHP
 
 if(empty($errori)){
 
-   if(mail($email,"Richiesta prestito prestitifaidate", $table_init.$table_body.$table_close ))
+
+   if(invia_email($email,"Richiesta prestito prestitifaidate", $table_init.$table_body.$table_close))
          echo "<h1 id='invio_email corretto'>Email inviata correttamente</h1>";
-    else echo "<h1 id='invio_email errore'>Errore invio email</h1>";
+    else echo "<h1 id='invio_email errore'>Errore invio email, riprova tra qualche minuto.</h1>";
+
+    
 }
 else
 {
@@ -115,4 +158,9 @@ else
                 echo "<dt>$campo</dt><dd>$mex</dd>";
         echo "</dl>";
     echo "</div>";
+}
+
+function invia_email($email, $oggetto, $corpo)
+{
+    return mail($email,$oggetto, $corpo);
 }

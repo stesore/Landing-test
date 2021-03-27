@@ -5,7 +5,7 @@ ini_set('error_log','logs/php-errors.log');
 error_reporting(E_ERROR | E_WARNING);
 
 
-function multistep_forms(string $formname, string $basepath=""): ?string
+function multistep_forms(string $formname, string $id, string $basepath=""): ?string
 {
     $formname_filtered = filter_var($formname,FILTER_SANITIZE_STRING);
     $filename = "$basepath$formname_filtered.json";
@@ -30,8 +30,8 @@ function multistep_forms(string $formname, string $basepath=""): ?string
         $n_columns = count((array)$multi_step_form_data);
         $bt_class = intval(12 / $n_columns);
         $html_form_start.=
-        "<div class='multi-step-forms columns_$n_columns' id='$formname_filtered'> 
-            <form id='$formname' name='$formname' class='multistep-form' action='multi-step-form-res.php' method='get'>"; 
+        "<div class='multi-step-forms columns_$n_columns' id='$formname_filtered$id'> 
+            <form id='$formname' name='$formname' class='multistep-form' action='multi-step-form-res.php' method='post'>"; 
 
                 foreach($multi_step_form_data as $key => $step)
                 {
@@ -71,11 +71,12 @@ function multistep_forms(string $formname, string $basepath=""): ?string
                     if(!empty($step->notes))
                         $html_step_content_inner.="<div class='note col-12'>$step->notes</div>";   
 
+                        $html_step_content_inner.="<div class='error'></div>";
 
                         $html_step_content_inner.="<div class='step-nav-container' data-current-step='$key' >";
                     if( $prev_step == 0) // primo step
                     {
-                        $html_step_content_inner.="<button class='col-$col' data-dir='next' data-target='$next_step'>avanti</button>";
+                        $html_step_content_inner.="<button type='button' class='col-$col' data-dir='next' data-target='$next_step'>avanti</button>";
                     }
                     elseif( $next_step <= $n_columns )
                     {
@@ -86,8 +87,8 @@ function multistep_forms(string $formname, string $basepath=""): ?string
                     else // ultimo step
                     {
                         $col="6"; 
-                        $html_step_content_inner.="<button class='col-$col' data-dir='prev'  data-target='$prev_step'>indietro</button>";  
-                        $html_step_content_inner.="<input type='submit'  data-dir='submit' class='col-$col' value='conferma' />";
+                        $html_step_content_inner.="<button type='button' class='col-$col' data-dir='prev'  data-target='$prev_step'>indietro</button>";  
+                        $html_step_content_inner.="<button type='submit'  data-dir='submit' class='col-$col'>CONFERMA</button>";
                     } 
                         $html_step_content_inner.="</div>";
                     $html_step_content_inner.="</div>";

@@ -7,6 +7,7 @@ $color-5-hex: #444444;
 $color-6-hex: #838383;
 $color-7-hex: #8F8F8F;
 $color-8-hex: #E7F4EC;
+$color-error: #a94442;
 
 /* Color Theme Swatches in RGBA */
 $color-1-rgba: rgba(255,255,255, 1);
@@ -20,6 +21,7 @@ $color-7-rgba: rgba(231,244,236, 1);
 /* Wrap */
 $wrap-full: 2560px;
 $wrap-site: 1920px;
+$media-desktop-max: 1280px;
 
 /* Media */
 $media-mobile-min:  320px;
