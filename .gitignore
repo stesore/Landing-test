@@ -1,10 +1,12 @@
 .idea
 .DS_Store
 .vscode
-.note.txt
+note.txt
+/node_modules/
 /www/vendor/
 /www/vendor/*/**
 /www/node_modules/
 /www/node_modules/*/**
 /www/mix-manifest.json
-/logs/
+/www/logs/
+/www/logs/*
