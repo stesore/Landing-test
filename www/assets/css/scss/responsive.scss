@@ -1,0 +1,681 @@
+
+@media only screen and (min-width:993px) and (max-width:1280px)
+{
+    header
+    {
+        #numeroverde
+        {
+            max-width:100% !important;
+            min-width:100% !important;
+            width:100% !important;
+            display:block !important;
+            height:auto !important;
+            padding:15px 10px !important;
+
+            .numeroverde-img-cont
+            {
+                display: none !important;
+            }
+            .numeroverde-details-cont 
+            {
+                width:100% !important;
+                display:block !important;
+                max-width:100% !important;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width:992px)
+{
+    #nav-mobile-item,
+    button.navbar-toggle
+    {
+        display: none; 
+    }
+}
+
+@media only screen and(max-width: 991px)
+{
+    header
+    {
+        .logo_container
+        {
+            width: 33% !important;
+            flex: 0 0 33% !important;
+            max-width:33% !important;
+            padding:10px 30px;
+        }
+        #numeroverde
+        {
+            display: none !important;
+        }
+        .navbar-collapse
+        {
+            box-shadow: none;
+            background: #e7c700;
+            width: 100%;
+            position: absolute;
+        }
+
+        .navbar-collapse.collapse {
+            display: none !important;
+        }
+        .navbar-collapse.collapse.show
+        {
+            #nav-mobile-item
+            {
+                &::before
+                {
+                    content: "";
+                    width: 40px;
+                    height:100%;
+                    display: block;
+                    align-items: center;
+                    align-content: center;
+                    background-image: url("/images/phone-call.svg");
+                    background-size:contain;
+                    background-position: center center;
+                    background-repeat: no-repeat; 
+                    float: left;
+                    margin-right: 20px;
+                }
+                span
+                {
+                    display: block;
+                }
+
+            }
+            max-width:100%;
+            
+            overflow-y: visible;
+            display:flex !important;
+            flex-direction: column!important;
+            flex-wrap: wrap;
+
+            li
+            {
+                display:block;
+                float:none;
+                clear:both;
+                width:100%;
+                flex-grow: 1;
+                padding: 12px 0 11px;
+                border-bottom: 1px solid rgba(255,255,255,.20);
+                float: none;
+                margin: 0px 16px;
+                padding:13px 0 !important;
+                text-align:left !important;
+
+                a
+                {
+                    width:100%;
+                    display: block;
+                    font-size: 13px;
+                    color: #000000;
+                    font-family: "Lato";
+                    cursor: pointer !important;
+                    border-bottom: 1px solid transparent;
+                    text-align:left !important;
+                }
+            }
+            
+
+        }
+        .navbar-toggle {
+            background-color: #6B767C;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: none;
+
+            .icon-bar
+            {
+                background: #fff;
+                display: block;
+                width: 22px;
+                height: 2px;
+                border-radius: 1px;
+                margin-top: 4px
+            }
+                        
+        }
+        .navbar-collapse 
+        {
+            top: 50px;
+            left: 0;
+            
+        }
+        
+            
+        #mainmenu
+        {
+            position:absolute!important;
+            
+            z-index: 1001;
+            background-color: $yellow;
+
+            .navbar-nav {
+                width: 100%;
+                padding: 10px 10px;
+            }
+            
+        }
+        
+    } 
+    .phone-number-mobile {
+        max-width: 100%;
+        width: 100%;
+        background: #E7C700;
+        height: 60px;
+        padding: 12px 0;
+        z-index: 1000;
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        color: #000000 !important;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    #numeroverdemobile{
+	    width: 100%;
+	    background: #E7C700;
+	    height: 60px;
+	    padding: 12px 0;
+		z-index: 1000;
+		position: fixed !important;
+	    bottom: 0;
+	    color: #000000;
+	    box-sizing: border-box;
+	    font-weight: bold;
+	    font-size: 16px;
+        
+        div.nvm
+        {
+            font-size: 12px;
+            color: #4e4e4e;
+            text-align: center;
+            display:block;
+        }
+           
+	    
+    }
+
+
+    #form-top-section .titolo,
+    #form-bottom-section .titolo
+    {
+            display: flex;
+            flex-direction:unset !important;
+            padding-bottom: 70px;
+            padding-left: 0;
+            align-items: center !important;
+        
+    }
+
+    #vantaggi-section::after
+    {
+        width: 67px !important;
+        height: 145px !important; 
+    }
+    #section-filiali
+    {
+        #testofiliali
+        {
+            width: 100% !important;
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+        .img-filiali
+        {
+            display:none!important;
+        }
+    }
+    #form-bottom-section
+    {
+        height: auto !important
+    }
+    .flex-bottom-icon > div
+    {
+        display: flex;
+        align-content: center;        
+        padding:10px 10px;
+        margin:0;
+
+        .text-left,
+        .text-right
+        {
+            flex: 1 1 100%;
+            max-width: 100%;
+            text-align: center !important;
+            padding: 0;
+        }
+    }
+    #section-contattaci-tel *
+    {
+        text-align: center !important;
+        align-items: center !important;
+        align-content: center !important;
+        display: block !important;
+        img
+        {
+            margin:10px auto !important;
+        }
+    }
+    #icon-section
+    {
+       
+        *
+        {
+            text-align: center !important;
+            align-items: center !important;
+            align-content: center !important;
+            display: block !important;
+            img
+            {
+                margin:10px auto !important;
+            }
+        }
+        
+    }
+
+    #vantaggi-section .col-md-4 
+    {
+        padding: 30px 20px;
+    }
+}
+
+@media only screen and(max-width: 768px)
+{
+
+    h1
+    {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+    h2
+    {
+        font-size: 28px !important;
+        line-height: 32px !important;
+    }
+    h3
+    {
+        font-size: 22px !important;
+        line-height: 25px !important;
+    }
+    h4
+    {
+        font-size: 20px !important;
+        line-height: 26px !important;
+    }
+    h5
+    {
+        font-size: 19px !important;
+        line-height: 25px !important;
+    }
+    h6
+    {
+        font-size: 15px !important;
+        line-height: 19px !important;
+    }
+    .text-main {        
+        font-size: 25px!important;
+        line-height: 32px!important;
+    }
+    .text-secondary {        
+        font-size: 14px!important;
+        line-height: 20px!important;        
+    }
+    .custom-btn
+    {
+        max-width:96% !important;
+        margin: 20px auto !important;
+    }
+    .multi-step-forms
+    {
+        margin:20px auto !important;
+        float:none !important;
+    }
+    .titolo,
+    .titolo *
+    {
+        text-align: center !important;
+    }
+    header
+    {
+        .logo_container
+        {
+            padding: 5px 0 5px 20px !important;
+        }
+        
+        .logo-link
+        {
+            padding:2px 5px !important;
+
+            #mainlogo
+            {   
+                padding:0;
+                height:80px !important;
+                width: auto!important;
+                padding: 5px 0px !important;
+            }
+        } 
+        &.sticky
+        {        
+            #mainlogo
+            {   
+                padding:0;
+                height:65px !important;
+                width: auto!important;
+                padding: 5px 0px !important;
+            }
+        }
+        #numeroverde
+        {
+            display: none !important;
+        }
+        .navbar-collapse
+        {
+            box-shadow: none;
+            background: #e7c700;
+            width: 100%;
+            position: absolute;
+        }
+
+        .navbar-collapse.collapse {
+            display: none !important;
+        }
+        .navbar-collapse.collapse.show
+        {
+            max-width:100%;
+            
+            overflow-y: visible;
+            display:flex !important;
+            flex-direction: column!important;
+            flex-wrap: wrap;
+
+            li
+            {
+                display:block;
+                float:none;
+                clear:both;
+                width:100%;
+                flex-grow: 1;
+                padding: 12px 0 11px;
+                border-bottom: 1px solid rgba(255,255,255,.20);
+                float: none;
+                margin: 0px 16px;
+                padding:13px 0 !important;
+
+                a
+                {
+                    width:100%;
+                    display: block;
+                    font-size: 13px;
+                    color: #000000;
+                    font-family: "Lato";
+                    cursor: pointer !important;
+                    border-bottom: 1px solid transparent;
+                }
+            }
+            
+
+        }
+        .navbar-toggle {
+            background-color: #6B767C;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: none;
+
+            .icon-bar
+            {
+                background: #fff;
+                display: block;
+                width: 22px;
+                height: 2px;
+                border-radius: 1px;
+                margin-top: 4px
+            }
+                        
+        }
+        .navbar-collapse 
+        {
+            top: 44px;
+            left: 0;
+            
+        }
+        
+            
+        #mainmenu
+        {
+            position:absolute!important;            
+            z-index: 1001;
+            background-color: $yellow;
+
+            .navbar-nav {
+                width: 100%;
+                padding: 10px 10px;
+            }
+            
+        }
+        
+        
+    } 
+    .phone-number-mobile {
+        max-width: 100%;
+        width: 100%;
+        background: #E7C700;
+        height: 60px;
+        padding: 12px 0;
+        z-index: 1000;
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        color: #000000 !important;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    #numeroverdemobile{
+	    width: 100%;
+	    background: #E7C700;
+	    height: 60px;
+	    padding: 12px 0;
+		z-index: 1000;
+		position: fixed !important;
+	    bottom: 0;
+	    color: #000000;
+	    box-sizing: border-box;
+	    font-weight: bold;
+	    font-size: 16px;
+        
+        div.nvm
+        {
+            font-size: 12px;
+            color: #4e4e4e;
+            text-align: center;
+            display:block;
+        }
+           
+	    
+    }
+    #vantaggi-section::after
+    {
+        width: 67px !important;
+        height: 145px !important; 
+    }
+    #section-filiali
+    {
+        #testofiliali
+        {
+            width: 100% !important;
+        }
+        #imgfiliali
+        {
+            display:none;
+        }
+    }
+    #tasso-section
+    {
+        .col-md-4
+        {
+            padding:20px 10px;
+        }
+    }
+    #form-bottom-section
+    {
+        height: auto !important
+    }
+    #section-prestito_veloce
+    {
+        .row
+        {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            flex: 1 1 100%;
+            margin: 0 !important;
+        }
+    }
+
+    #prestiti-section 
+    {
+        .nav-tabs li a
+        {
+            font-size:14px !important;
+            padding: 6px !important;
+        }
+    }
+    #section-contattaci-tel
+    {
+        .text-main
+        {
+            font-size: 24px;
+        }
+    }
+}
+
+
+@media only screen and(max-width: 600px)
+{    
+    header
+    {      
+        &.sticky
+        {        
+            .logo-link
+            {
+                padding:2px 5px !important;
+
+                #mainlogo
+                {   
+                    padding:0;
+                }
+            } 
+        }
+        
+    } 
+    .phone-number-mobile {
+        max-width: 100%;
+        width: 100%;
+        background: #E7C700;
+        height: 60px;
+        padding: 12px 0;
+        z-index: 1000;
+        position: fixed;
+        bottom: 0;
+        z-index: 9;
+        color: #000000 !important;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    #numeroverdemobile{
+	    width: 100%;
+	    background: #E7C700;
+	    height: 60px;
+	    padding: 12px 0;
+		z-index: 1000;
+		position: fixed !important;
+	    bottom: 0;
+	    color: #000000;
+	    box-sizing: border-box;
+	    font-weight: bold;
+	    font-size: 16px;
+        
+        div.nvm
+        {
+            font-size: 12px;
+            color: #4e4e4e;
+            text-align: center;
+            display:block;
+        }
+           
+	    
+    }
+    #vantaggi-section::after
+    {
+        width: 67px !important;
+        height: 145px !important; 
+    }
+    #section-filiali
+    {
+        #testofiliali
+        {
+            width: 100% !important;
+        }
+        #imgfiliali
+        {
+            display:none;
+        }
+    }
+    #tasso-section
+    {
+        .col-md-4
+        {
+            padding:20px 10px;
+        }
+    }
+    #form-bottom-section
+    {
+        height: auto !important
+    }
+    #section-prestito_veloce
+    {
+        .row
+        {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+            flex: 1 1 100%;
+            margin: 0 !important;
+        }
+    }
+
+    #prestiti-section 
+    {
+        .nav-tabs li a
+        {
+            font-size:14px !important;
+            padding: 6px !important;
+        }
+    }
+    #section-contattaci-tel
+    {
+        .text-main
+        {
+            font-size: 24px;
+        }
+    }
+}
+

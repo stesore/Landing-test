@@ -1,0 +1,503 @@
+{
+    "1": {
+        "label" : "Importo",
+        "title" : "Che importo ti serve?",
+        "subtitle"    : "Ti informiamo che questa soluzione agevolata di prestito non può essere concessa a coloro che non possono dimostrare una forma di reddito da lavoro (disoccupati, reddito di cittadinanza, pensione INAIL, etc.). Sono invece inclusi tutti pensionati, a partire da coloro che percepiscono una pensione minima di 650 euro al mese",
+        "notes" : "",        
+        "fields" : [
+            
+            {   
+                "id"    : "amount",
+                "type"  : "radio",
+                "datatype" : "number",                
+                "htmlattrs":[],
+                "col": "6", 
+                "values" : 
+                [
+                    {
+                        "key"   : "5000€",
+                        "value" : "5000"
+                    },
+                    {
+                        "key"   : "10000€",
+                        "value" : "10000"
+                    },
+                    {
+                        "key"   : "20000€",
+                        "value" : "20000"
+                    },
+                    {
+                        "key"   : "30000€",
+                        "value" : "30000"
+                    },
+                    {
+                        "key"   : "50000€",
+                        "value" : "50000"
+                    }
+                ]                
+            },
+            {
+                "id"    : "amount_custom",
+                "type"  : "text",
+                "datatype" : "number",                
+                "htmlattrs":
+                [{
+                    "key"   : "pattern",
+                    "value" : "[0-9]{4,}"
+                 },
+                 {
+                    "key"   : "placeholder",
+                    "value" : "altro"
+                 }
+                ]
+                ,
+                "col": "6",                               
+                "values" :  
+                {
+                    "" : ""
+                }
+            }            
+        ]            
+        },
+    "2" :  {
+        "label" : "Attività",
+        "title" : "Attività",
+        "subtitle":"",
+        "notes" : "",
+        "fields" : [
+            {   
+                "id"    : "activity",
+                "type"  : "radio",
+                "label" : "",
+                "datatype" : "text",                
+                "col": "6",
+                "htmlattrs":[],
+                "values" : 
+                [
+                    {
+                        "key"   : "Pensionato INPS",
+                        "value" : "pensionato-inps"
+                    },
+                    {
+                        "key"   : "Pensionato altro ente",
+                        "value" : "pensionato-altro-ente"
+                    },
+                    {
+                        "key"   : "Dipendente MoiPa",
+                        "value" : "dipendente-noipa"
+                    },
+                    {
+                        "key"   : "Dipendente pubblico",
+                        "value" : "dipendente-pubblico"
+                    },
+                    {
+                        "key"   : "Dipendente statale / ministeriale",
+                        "value" : "dipendente-statale-ministeriale"
+                    },
+                    {
+                        "key"   : "Dipendente parastatale",
+                        "value" : "dipendente-parastatale"
+                    },
+                    {
+                        "key"   : "Dipendente Postale",
+                        "value" : "dipendente-postale"
+                    },
+                    {
+                        "key"   : "Ferroviere",
+                        "value" : "ferroviere"
+                    },
+                    {
+                        "key"   : "Azienda Municipalizzata",
+                        "value" : "azienda-municipalizzata"
+                    },
+                    {
+                        "key"   : "Militare",
+                        "value" : "militare"
+                    },
+                    {
+                        "key"   : "Dipendente Azienda Privata",
+                        "value" : "dipendente-azienda-privata"
+                    },
+                    {
+                        "key"   : "Lavoratore autonomo",
+                        "value" : "lavoratore-autonomo"
+                    }
+                ]
+            }
+        ]
+    },
+    "3" :  {
+        "label" : "Reddito",
+        "title" : "Maggiori Informazioni",
+        "subtitle":"",
+        "notes" : "non è richiesta la compilazione se sei un pensionato",
+        "fields" : [
+            {   
+                "id"    : "contratto",
+                "type"  : "select",
+                "label" : "",
+                "datatype" : "",
+                "col": "12",
+                "htmlattrs":[],
+                "values" : 
+                [
+                    {  
+                        "key" :  "",
+                        "value": "Tipo di contratto*"
+                    }, 
+                    {  
+                        "key" :  "determinato",
+                        "value": "Determinato"
+                    }, 
+                    {  
+                        "key" :  "indeterminato",
+                        "value": "Indeterminato"
+                    }                    
+                ]                
+            },
+            {
+                "id"    : "data_assunzione",
+                "type"  : "text",
+                "label" : "",
+                "datatype" : "",
+                "col": "12",
+                "htmlattrs":[
+                    {
+                        "key"  : "placeholder",
+                        "value": "Data di assunzione gg/mm/aaaa *"
+                    },
+                    {
+                        "key"  : "pattern",
+                        "value" : "(?:((?:0[1-9]|1[0-9]|2[0-9])\/(?:0[1-9]|1[0-2])|(?:30)\/(?!02)(?:0[1-9]|1[0-2])|31\/(?:0[13578]|1[02]))\/(?:19|20)[0-9]{2})"
+                    }
+                ],
+                "values" : ""
+            },
+            {
+                "id"    : "numero_mensilita",
+                "type"  : "select",
+                "label" : "",
+                "datatype" : "", 
+                "col": "12",               
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    }
+                ],
+                "values" : 
+                [                    
+                    {  
+                        "key" :  "",
+                        "value": "Numero mensilità"
+                    }, 
+                    {  
+                        "key" :  "12",
+                        "value": "12"
+                    },
+                    {  
+                        "key" :  "13",
+                        "value": "13"
+                    },
+                    {  
+                        "key" :  "14",
+                        "value": "14"
+                    },
+                    {  
+                        "key" :  "15",
+                        "value": "15"
+                    }                    
+                ]                 
+            },
+            {
+                "id"    : "reddito_mensile_medio",
+                "type"  : "select",
+                "label" : "",
+                "datatype" : "", 
+                "col": "12",               
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    }
+                ],
+                "values" :
+                [                    
+                    {  
+                        "key" :  "",
+                        "value": "Reddito mensile medio"
+                    }, 
+                    {  
+                        "key" :  "650",
+                        "value": "sopra 650€"
+                    },
+                    {  
+                        "key" :  "1200",
+                        "value": "sopra 1200€"
+                    },
+                    {  
+                        "key" :  "1800",
+                        "value": "sopra 1800€"
+                    },
+                    {  
+                        "key" :  "2000",
+                        "value": "sopra 2000€"
+                    }                    
+                ]                 
+            }
+        ]
+    },
+    "4" :  {
+        "label" : "Esito",
+        "title" : "Verifica la fattibilità",
+        "subtitle":"",
+        "notes" : "",
+        "fields" : [
+            {   
+                "id"    : "nome",
+                "type"  : "text",
+                "label" : "",
+                "datatype" : "text",
+                "col": "6",                
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    },
+                    {
+                        "key"   : "placeholder",
+                        "value" : "Nome"
+                    }
+                ],
+                "values" : ""
+            },
+            {   
+                "id"    : "cognome",
+                "type"  : "text",
+                "label" : "",
+                "datatype" : "text",
+                "col": "6",                
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    },
+                    {
+                        "key"   : "placeholder",
+                        "value" : "Cognome"
+                    }
+                ],
+                "values" : ""
+            },
+            {   
+                "id"    : "email",
+                "type"  : "email",
+                "label" : "",
+                "datatype" : "",  
+                "col": "6",                
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    },
+                    {
+                        "key"   : "placeholder",
+                        "value" : "E-mail"
+                    }
+                ],
+                "values" : ""
+            },
+            {   
+                "id"    : "telefono",
+                "type"  : "tel",
+                "label" : "",
+                "datatype" : "",                
+                "col": "6",  
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "pattern",
+                        "value" : "[0-9]{6,}"
+                    },
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    },
+                    {
+                        "key"   : "placeholder",
+                        "value" : "Telefono"
+                    }
+                ],
+                "values" : ""
+            },
+            {   
+                "id"    : "provincia",
+                "type"  : "select",
+                "label" : "",
+                "datatype" : "",
+                "col": "12",                  
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    }
+                ],                
+                "values" :
+                [                    
+                    {"key": ""  , "value":"Provincia"},
+                    {"key": "AG", "value":"Agrigento"},
+                    {"key": "AL", "value":"Alessandria"},
+                    {"key": "AN", "value":"Ancona"},
+                    {"key": "AO", "value":"Aosta"},
+                    {"key": "AR", "value":"Arezzo"},
+                    {"key":"AP", "value":"Ascoli Piceno"},
+                    {"key":"AT", "value":"Asti"},
+                    {"key":"AV", "value":"Avellino"},
+                    {"key":"BA", "value":"Bari"},
+                    {"key":"BT", "value":"Barletta-Andria-Trani"},
+                    {"key":"BL", "value":"Belluno"},
+                    {"key":"BN", "value":"Benevento"},
+                    {"key":"BG", "value":"Bergamo"},
+                    {"key":"BI", "value":"Biella"},
+                    {"key":"BO", "value":"Bologna"},
+                    {"key":"BZ", "value":"Bolzano"},
+                    {"key":"BS", "value":"Brescia"},
+                    {"key":"BR", "value":"Brindisi"},
+                    {"key":"CA", "value":"Cagliari"},
+                    {"key":"CL", "value":"Caltanissetta"},
+                    {"key":"CB", "value":"Campobasso"},
+                    {"key":"CI", "value":"Carbonia-Iglesias"},
+                    {"key":"CE", "value":"Caserta"},
+                    {"key":"CT", "value":"Catania"},
+                    {"key":"CZ", "value":"Catanzaro"},
+                    {"key":"CH", "value":"Chieti"},
+                    {"key":"CO", "value":"Como"},
+                    {"key":"CS", "value":"Cosenza"},
+                    {"key":"CR", "value":"Cremona"},
+                    {"key":"KR", "value":"Crotone"},
+                    {"key":"CN", "value":"Cuneo"},
+                    {"key":"EN", "value":"Enna"},
+                    {"key":"FM", "value":"Fermo"},
+                    {"key":"FE", "value":"Ferrara"},
+                    {"key":"FI", "value":"Firenze"},
+                    {"key":"FG", "value":"Foggia"},
+                    {"key":"FC", "value":"Forlì-Cesena"},
+                    {"key":"FR", "value":"Frosinone"},
+                    {"key":"GE", "value":"Genova"},
+                    {"key":"GO", "value":"Gorizia"},
+                    {"key":"GR", "value":"Grosseto"},
+                    {"key":"IM", "value":"Imperia"},
+                    {"key":"IS", "value":"Isernia"},
+                    {"key":"SP", "value":"La Spezia"},
+                    {"key":"AQ", "value":"L'Aquila"},
+                    {"key":"LT", "value":"Latina"},
+                    {"key":"LE", "value":"Lecce"},
+                    {"key":"LC", "value":"Lecco"},
+                    {"key":"LI", "value":"Livorno"},
+                    {"key":"LO", "value":"Lodi"},
+                    {"key":"LU", "value":"Lucca"},
+                    {"key":"MC", "value":"Macerata"},
+                    {"key":"MN", "value":"Mantova"},
+                    {"key":"MS", "value":"Massa-Carrara"},
+                    {"key":"MT", "value":"Matera"},
+                    {"key":"ME", "value":"Messina"},
+                    {"key":"MI", "value":"Milano"},
+                    {"key":"MO", "value":"Modena"},
+                    {"key":"MB", "value":"Monza e della Brianza"},
+                    {"key":"NA", "value":"Napoli"},
+                    {"key":"NO", "value":"Novara"},
+                    {"key":"NU", "value":"Nuoro"},
+                    {"key":"OT", "value":"Olbia-Tempio"},
+                    {"key":"OR", "value":"Oristano"},
+                    {"key":"PD", "value":"Padova"},
+                    {"key":"PA", "value":"Palermo"},
+                    {"key":"PR", "value":"Parma"},
+                    {"key":"PV", "value":"Pavia"},
+                    {"key":"PG", "value":"Perugia"},
+                    {"key":"PU", "value":"Pesaro e Urbino"},
+                    {"key":"PE", "value":"Pescara"},
+                    {"key":"PC", "value":"Piacenza"},
+                    {"key":"PI", "value":"Pisa"},
+                    {"key":"PT", "value":"Pistoia"},
+                    {"key":"PN", "value":"Pordenone"},
+                    {"key":"PZ", "value":"Potenza"},
+                    {"key":"PO", "value":"Prato"},
+                    {"key":"RG", "value":"Ragusa"},
+                    {"key":"RA", "value":"Ravenna"},
+                    {"key":"RC", "value":"Reggio Calabria"},
+                    {"key":"RE", "value":"Reggio Emilia"},
+                    {"key":"RI", "value":"Rieti"},
+                    {"key":"RN", "value":"Rimini"},
+                    {"key":"RM", "value":"Roma"},
+                    {"key":"RO", "value":"Rovigo"},
+                    {"key":"SA", "value":"Salerno"},
+                    {"key":"VS", "value":"Medio Campidano"},
+                    {"key":"SS", "value":"Sassari"},
+                    {"key":"SV", "value":"Savona"},
+                    {"key":"SI", "value":"Siena"},
+                    {"key":"SR", "value":"Siracusa"},
+                    {"key":"SO", "value":"Sondrio"},
+                    {"key":"TA", "value":"Taranto"},
+                    {"key":"TE", "value":"Teramo"},
+                    {"key":"TR", "value":"Terni"},
+                    {"key":"TO", "value":"Torino"},
+                    {"key":"OG", "value":"Ogliastra"},
+                    {"key":"TP", "value":"Trapani"},
+                    {"key":"TN", "value":"Trento"},
+                    {"key":"TV", "value":"Treviso"},
+                    {"key":"TS", "value":"Trieste"},
+                    {"key":"UD", "value":"Udine"},
+                    {"key":"VA", "value":"Varese"},
+                    {"key":"VE", "value":"Venezia"},
+                    {"key":"VB", "value":"Verbano-Cusio-Ossola"},
+                    {"key":"VC", "value":"Vercelli"},
+                    {"key":"VR", "value":"Verona"},
+                    {"key":"VV", "value":"Vibo Valentia"},
+                    {"key":"VI", "value":"Vicenza"},
+                    {"key":"VT", "value":"Viterbo"}
+                ]
+            },
+            {   
+                "id"    : "privacy1",
+                "type"  : "checkbox",
+                "label" : "L'Utente dichiara di aver preso visione dell' informativa resa da parte di Gruppo Santamaria S.p.a ai sensi degli articoli 13 e 14 del Regolamento generale UE sulla protezione dei dati GDPR e scaricabile dal presente sito nella sezione <a href='https://www.iubenda.com/privacy-policy/39306667/legal' target='_blank'>Privacy</a>.",
+                "datatype" : "",
+                "col": "12",
+                "htmlattrs":
+                [
+                    {
+                        "key"   : "required",
+                        "value" : "required"
+                    },
+                    {
+                        "key"   : "value",
+                        "value" : "privacy1_accettata"
+                    }
+                ],
+                "values" : ""
+            }, 
+            {   
+                "id"    : "privacy2",
+                "type"  : "checkbox",
+                "label" : "L'Utente presta il proprio libero ed esplicito consenso per il trattamento di cui all'informativa (dati forniti volontariamente dall'utente).",
+                "datatype" : "",                
+                "col": "12",
+                "htmlattrs":
+                [                    
+                    {
+                        "key"   : "value",
+                        "value" : "privacy2_accettata"
+                    }
+                ],
+                "values" : "privacy2_accettata"
+            }
+        ]
+    }
+}
+    
