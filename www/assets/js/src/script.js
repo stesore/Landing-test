@@ -1,25 +1,96 @@
 require( "bootstrap" ); 
 var $ = jQuery = require( "jquery" ); 
 
+
+var isMobile = {
+  Android: function () {
+      return navigator.userAgent.match(/Android/i);
+  },
+  BlackBerry: function () {
+      return navigator.userAgent.match(/BlackBerry/i);
+  },
+  iOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  },
+  Opera: function () {
+      return navigator.userAgent.match(/Opera Mini/i);
+  },
+  Windows: function () {
+      return navigator.userAgent.match(/IEMobile/i);
+  },
+  any: function () {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+  }
+};
+
 $(function(){
+
+    if(isMobile)
+    {
+        // se sono in mobile, triggero il click a menu e collasso il mobile menu
+        $(document).on('click','.mainmenu__navitem__innerlink', {} ,function(e)
+        {
+            $("#mobile-menu-btn").trigger("click");
+            
+        });
+    }
+
+    
+    $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+    
+        let header_height = $("#mainheader").height();
+
+        // console.log("header height: ",header_height);
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top - header_height
+        }, 500);
+    });
+   
+
+    /* STICKY HEADER /****/
+    stickyheader();
+    window.onscroll = function() {stickyheader()};
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function stickyheader() {
+
+
+
+      var header = document.getElementById("mainheader");
+      var sticky = header.offsetTop;
+      if (window.pageYOffset > sticky) { header.classList.add("sticky"); } else { header.classList.remove("sticky"); }
+    } 
+
+
+
+
 
     $('.multistep-form').attr('novalidate',true);
 
     $(document).on('click tap keydown','.step-nav-container button[data-dir]', {} ,function(e)
     {
         const formid = $(this).attr("data-form");
-        const step_num = $(formid).find('.stepcontent').length;
+        const step_num = $(`#${formid}`).find('.stepcontent').length;
         const direction = $(this).attr("data-dir");
         let current_step = $(this).parent().attr("data-current-step");
         let target_step  = $(this).attr("data-target");
 
         if( direction=="submit" )
         {
-          has_validation(current_step, formid);
+          // console.log("ho cliccato su BUTTON con direction ",direction);
+          if(has_validation(current_step, formid)){
+
+            // console.warn("step ",current_step," di ",formid," valido, faccio submit di",`#${formid}` );
+            //$(`#${formid}`).trigger('sumbit');
+
+          }
+            
         }
         if(direction=="prev" && target_step == (step_num - 1))
         {
-            $(`#${formid}`).attr('novalidate',true);            
+            $(`#${formid}`).attr('novalidate',true);  
+            $(`#${formid} .response`).fadeOut('fast'); 
+            // alert(`doveri nascondere #${formid} .response`);
         }
         if(direction=="prev" || (direction=="next" && has_validation(current_step,formid)))
         {
@@ -30,13 +101,15 @@ $(function(){
     $(document).on('click tap change keydown','input[name="amount_custom"]', {} ,function(e)
     {
         const formid = $(this).attr("form");
-        $(`#${formid}`).find('.fields').find('input[type="radio"]').prop("checked", false);        
+        const strepnum = $(this).closest(".stepcontent").attr("data-step");
+        $(`#${formid}`).find(`.stepcontent[data-step=${strepnum}] .fields`).find('input[type="radio"]').prop("checked", false);        
     });
 
     $(document).on('click tap keydown','input[name="amount"]', {} ,function(e)
     {
         const formid = $(this).attr("form");
-        $(`#${formid}`).find('.fields').find('input[name="amount_custom"]').val("");        
+        const strepnum = $(this).closest(".stepcontent").attr("data-step");
+        $(`#${formid}`).find(`.stepcontent[data-step=${strepnum}] .fields`).find('input[name="amount_custom"]').val("");        
     });
 
     $(document).on('focus','#multistep-form-data1_data_assunzione, #multistep-form-data2_data_assunzione', {} ,function(e)
@@ -57,6 +130,9 @@ $(function(){
     function invia_email(e, formobj, formid)
     {
           e.preventDefault();
+
+          console.log("preparo dati prima di inviare email");
+
           let privacy1="";
           if(formobj.find("input[name=privacy1]").is(":checked"))
             privacy1="privacy1_accettata"; 
@@ -69,6 +145,7 @@ $(function(){
           let current_step =   formobj.find(".stepcontent.active").attr("data-step");
               
           let data={
+          "form" : formid,
           "ajax" : 1,  
           "amount" : formobj.find('input[name=amount]:checked').val(),
           "amount_custom" : formobj.find('input[name=amount_custom]').val(),
@@ -86,6 +163,7 @@ $(function(){
           "privacy2" : privacy2
         }
 
+        console.table(data);
           
 
           //TODO controllare validazione di ogni step
@@ -98,9 +176,31 @@ $(function(){
               data: data,          
               success: function( response )
               {
-                  alert(response['status']+" -- "+response['mex']);
-                  if(response['status']==400)
+                if($("#"+formid+" .stepcontent.active .response"))
+                  $("#"+formid+" .stepcontent.active .response").remove();
+
+                if(response['status']==200){
+                  $("#"+formid+" .stepcontent.active .title").empty().text("Esito richiesta");
+                  $("#"+formid+" .stepcontent.active .step-nav-container").fadeOut('fast');
+                  $("#"+formid+" .stepcontent.active .fields").fadeOut('fast');
+                  $("#"+formid+" .stepcontent.active").append("<div class='response success'><h1 class='fsize23'>"+response['mex']+"</h1></div>");
+                }
+                else if(response['status']==400)
+                {
+
+
+                   $("#"+formid+" .stepcontent.active").append("<div class='response errors'><h1 class='fsize23'>"+response['mex']+"</h1></div>");
+                   $("#"+formid+" .stepcontent.active .subtitle").empty().text;
+                   
+                   $.each(response['errors'], function(key, val) {
+                    $("#"+formid+" .stepcontent.active .errors ").append(`<p>${key}: ${val}<p>`);
+                  });
                     console.table(response['errors']);
+                }
+                  
+
+                  // alert(response['status']+" -- "+response['mex']);
+                  
               }          
             })  
           }
@@ -122,7 +222,7 @@ $(function(){
     $.getScript('assets/js/owl.carousel.min.js', function()
     {
         /* CAROUSEL F.A.Q. */    
-        $('.owl-carousel').owlCarousel();
+        jQuery('.owl-carousel').owlCarousel();
     });
 
     
@@ -281,10 +381,10 @@ function has_validation(stepnum, formid)
 
         case "4":
           let nome_valid, cognome_valid, email_valid, telefono_valid, provincia_valid, privacy1_valid;
-          let idform = $(currentstep).attr("data-form");
+          let formid = $(currentstep).attr("data-form");
 
-          // $("#multistep-form-data"+idform).removeAttr('novalidate');
-
+          $("#"+formid).removeAttr('novalidate');
+          /*
           nome_item = currentstep.find('input[name="nome"]');
           cognome_item = currentstep.find('input[name="cognome"]');
           email_item = currentstep.find('input[name="email"]');
@@ -359,8 +459,11 @@ function has_validation(stepnum, formid)
             privacy1_lbl.removeClass("input_validation_error");
           }
           
+          console.log("Ritorno ",nome_valid && cognome_valid && email_valid && telefono_valid && provincia_valid && privacy1_valid);
+
           return (nome_valid && cognome_valid && email_valid && telefono_valid && provincia_valid && privacy1_valid)
-          
+          */
+          return true; 
           break;
 
         default:

@@ -30,10 +30,14 @@ function multistep_forms(string $formclass, string $id, string $basepath=""): ?s
     if($multi_step_form_data) 
     {
         $n_columns = count((array)$multi_step_form_data);
+        $class_col = "columns_".$n_columns;
         $bt_class = intval(12 / $n_columns);
+
         $html_form_start.=
-        "<div class='multi-step-forms columns_$n_columns' id='$formname'> 
-            <form id='$formname' name='$formname' class='multistep-form' action='multi-step-form-res.php' method='post'>"; 
+        "<div class='multi-step-forms $class_col' id='cont_$formname'> 
+            <form id='$formname' name='$formname' class='multistep-form' action='multi-step-form-res.php' method='post'>";   
+
+            error_log($html_form_start);
 
                 foreach($multi_step_form_data as $key => $step)
                 {
@@ -62,38 +66,36 @@ function multistep_forms(string $formclass, string $id, string $basepath=""): ?s
                                 <div class='title'>$step->title</div>
                                 <div class='subtitle'>$step->subtitle</div>";
 
+                            $html_step_content_inner.="<div class='fields row'>";
+                            foreach($step->fields as $field){ 
+                                $html_step_content_inner.=html_field_r($field, $formname);                        
+                            }
+                            $html_step_content_inner.="</div>";
+                            
+                            if(!empty($step->notes))
+                                $html_step_content_inner.="<div class='note col-12'>$step->notes</div>";   
 
+                                $html_step_content_inner.="<div class='error'></div>";
 
-                    $html_step_content_inner.="<div class='fields row'>";
-                    foreach($step->fields as $field){ 
-                        $html_step_content_inner.=html_field_r($field, $formname);                        
-                    }
-                    $html_step_content_inner.="</div>";
-                    
-                    if(!empty($step->notes))
-                        $html_step_content_inner.="<div class='note col-12'>$step->notes</div>";   
-
-                        $html_step_content_inner.="<div class='error'></div>";
-
-                        $html_step_content_inner.="<div class='step-nav-container'  data-form='$formname' data-current-step='$key' >";
-                    if( $prev_step == 0) // primo step
-                    {
-                        $html_step_content_inner.="<button type='button' class='col-$col'  data-current-step='$key' data-form='$formname' data-dir='next' data-target='$next_step'>avanti</button>";
-                    }
-                    elseif( $next_step <= $n_columns )
-                    {
-                        $col="6"; 
-                        $html_step_content_inner.="<button type='button' class='col-$col'  data-current-step='$key' data-form='$formname' data-dir='prev' data-target='$prev_step'>indietro</button>";  
-                        $html_step_content_inner.="<button type='button' class='col-$col' data-current-step='$key' data-form='$formname' data-dir='next' data-target='$next_step'>avanti</button>";                          
-                    }
-                    else // ultimo step
-                    {
-                        $col="6"; 
-                        $html_step_content_inner.="<button type='button' class='col-$col' data-current-step='$key' data-form='$formname' data-dir='prev'  data-target='$prev_step'>indietro</button>";  
-                        $html_step_content_inner.="<button type='submit'  data-form='$formname' data-current-step='$key' data-dir='submit' class='col-$col'>CONFERMA</button>";
-                    } 
-                        $html_step_content_inner.="</div>";
-                    $html_step_content_inner.="</div>";
+                                $html_step_content_inner.="<div class='step-nav-container'  data-form='$formname' data-current-step='$key' >";
+                                if( $prev_step == 0) // primo step
+                                {
+                                    $html_step_content_inner.="<button type='button' class='col-$col'  data-current-step='$key' data-form='$formname' data-dir='next' data-target='$next_step'>avanti</button>";
+                                }
+                                elseif( $next_step <= $n_columns )
+                                {
+                                    $col="6"; 
+                                    $html_step_content_inner.="<button type='button' class='col-$col'  data-current-step='$key' data-form='$formname' data-dir='prev' data-target='$prev_step'>indietro</button>";  
+                                    $html_step_content_inner.="<button type='button' class='col-$col' data-current-step='$key' data-form='$formname' data-dir='next' data-target='$next_step'>avanti</button>";                          
+                                }
+                                else // ultimo step
+                                {
+                                    $col="6"; 
+                                    $html_step_content_inner.="<button type='button' class='col-$col' data-current-step='$key' data-form='$formname' data-dir='prev'  data-target='$prev_step'>indietro</button>";  
+                                    $html_step_content_inner.="<button type='submit' form='$formname'  data-form='$formname' data-current-step='$key' data-dir='submit' class='col-$col'>CONFERMA</button>";
+                                } 
+                                $html_step_content_inner.="</div>";  // chiudo setep nav container
+                            $html_step_content_inner.="</div>"; //chiudo stepcontent
 
                 }
                 $html_step_count  ="<div class='formstep-count row'>$html_step_count_inner</div>";
@@ -104,8 +106,10 @@ function multistep_forms(string $formclass, string $id, string $basepath=""): ?s
         $html_form_close.=
             "</form>
          </div>";
+
+         
     }        
-    return $html_form_start.$html_step_count.$html_step_content.$html_form_close="";
+    return $html_form_start.$html_step_count.$html_step_content.$html_form_close;
 }
 
 

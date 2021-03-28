@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="icon" href="favicon.ico" />  
 	<link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;display=swap" type="text/css" media="all">
@@ -18,28 +18,34 @@
     <!-- WRAP 2560px -->
     <div class="site-wrap">
         <!-- WRAP 1920px -->
-        <div class="site-wrap__contents">
+        <div class="site-wrap__contents"> 
             <!-- HEADER STICKY -->
-            <header class="navbar navbar-expand navbar-dark sticky-top  flex-column flex-md-row bd-navbar">
+            <header class="navbar navbar-expand navbar-dark sticky-top shrink-header shrink-nav flex-column flex-md-row bd-navbar" id="mainheader">
                 <div class="container">
-                    <div class="col-md-2 col-sm-4 col-xs-4">
+                    <div class="col-md-2 col-sm-4 col-xs-4 logo_container">
                         <a class="logo-link" href="/">
                             <img src="images/logo.svg" alt="Prestiti Fai da te" id="mainlogo" />
                         </a>
                     </div>
-                    <div class="mainmenu col-md-8 col-sm-8 col-xs-8">
-                        <div class="navbar-collapse pull-right collapse" style="height: 0px;">
+                    <div class="mainmenu col-md-8 col-sm-8 col-xs-8 menu_container">
+                        <button data-target="#mainmenu" data-toggle="collapse" class="navbar-toggle collapsed" type="button" id="mobile-menu-btn" >
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-collapse pull-right collapse " id="mainmenu">
                             <ul class="mainmenu nav navbar-nav font-weight-500">
                                 <li class="mainmenu__navitem"><a class="mainmenu__navitem__innerlink" href="#prestiti-section">Prestiti fai da te</a></li>
                                 <li class="mainmenu__navitem"><a class="mainmenu__navitem__innerlink" href="#tasso-section">Tasso fisso agevolato</a></li>
                                 <li class="mainmenu__navitem"><a class="mainmenu__navitem__innerlink" href="#vantaggi-section">Vantaggi</a></li>
                                 <li class="mainmenu__navitem"><a class="mainmenu__navitem__innerlink" href="#section-prestito_veloce">Fai da te!</a></li>
                                 <li class="mainmenu__navitem"><a class="mainmenu__navitem__innerlink" href="#faq-section">FAQ</a></li>
-                                <li class="mainmenu__navitem--solomobile" style="color: #000000;">Numero Verde Gratuito <span style="font-size: 20px; font-weight: 600;">800821289</span><br>Aperto dal lunedì al venerdì<br> <span style="font-size: 15px; font-weight: 600;">9-13/14-18</span></li>
-                            </ul>
+                                <li class="propClone" id="nav-mobile-item" style="color: #000000;"><a href="tel:800821289" target="_blank">Numero Verde Gratuito <span style="font-size: 20px; font-weight: 600;">800821289</span><br>Aperto dal lunedì al venerdì<br> <span style="font-size: 15px; font-weight: 600;">9-13/14-18</span></a></li>                                
+                            </ul> 
                         </div> 
                     </div>
-                    <div class="col-md-2 header-contact bg-yellow hidden-sm hidden-xs" id="numeroverde">
+                    <div class="col-md-2 header-contact bg-yellow hidden-sm hidden-xs numeroverde_container" id="numeroverde">
                         <div class="row"> 
                             <div class="numeroverde-img-cont col-md-4">
                                 <img src="images/phone-call.svg" alt="Icona numero verde" id="img-num-verde" /> 
@@ -49,11 +55,36 @@
                                 <span class='numero'>800 82 12 89</span>
                                 <span class='testo'>lun-ven 9-13 / 14-18</span>
                             </div>    
-                        <div> 
+                        </div> 
                     </div>   
                 </div>
             </header>
-            <!-- HEADER STICKY / -->    
+            <!-- HEADER STICKY / -->  
+            
+                    <!-- CALL TO ACTION MOBILE 
+                    <div class="phone-number-mobile">
+                    <a href="tel:800821289">
+                        <div class="wrap">
+                            <span style="font-size: 12px">NUMERO VERDE GRATUITO</span>
+                            <img src="images/phone-call.svg" height="30px" width="30px" data-img-size="(W)30px X (H)30px" alt="phone">
+                            <span style="font-weight: 600; font-size: 18px; padding-right: 20px">800821289</span>
+                        </div>
+                    </a>
+                </div>
+                <div id="numeroverdemobile" class="text-center">
+                    <div class="row">
+                        <div class="nvm testonumero col-xs-6">
+                            <span class='testo'>Numero Verde Gratutito</span>                                
+                        </div>
+                        <div class="nvm numeroverde-img-cont col-xs-2">
+                            <img src="images/phone-call.svg" alt="Icona numero verde" id="img-num-verde" /> 
+                        </div>
+                        <div class="nvm numeroverde-details-cont col-xs-4">                                
+                            <span class='numero'>800 82 12 89</span>                                
+                        </div> 
+                    </div>
+                </div>
+                <!-- CALL TO ACTION MOBILE /-->
             <main>
                 <!-- SECTION TOP FORM -->    
                 <section class="container-fluid" id="form-top-section">
@@ -367,22 +398,22 @@
                                 </div>
                             </div>
                             <div class="flex-prestito-veloce container-fluid row">
-                                <div class="text-center col-3 col-sm-12 col-md-3">
+                                <div class="text-center col-sm-12 col-md-3">
                                     <img src="./images/identity_card.svg" alt="identity_card" style="margin-bottom:20px; height: 200px">
                                     <span class="text-blue" style="display: block;font-weight: 600;font-size:18px;">1. Fai una foto al tuo documento<br> di identità e alla tua busta<br> paga (o al tuo cedolino)</span>
                                     <p class="text-yellow-dark" style="font-size: 20px">assicurati che<br> sia tutto leggibile</p>
                                 </div>
-                                <div class="text-center col-3 col-sm-12 col-md-3">
+                                <div class="text-center col-sm-12 col-md-3">
                                     <img src="./images/whatsapp.svg" alt="whatsapp" style=" margin-bottom:20px; height: 200px">
                                     <span class="text-blue" style="display: block;font-weight: 600;font-size:18px;">2. Inviaci <br>le foto su<br> WhatsApp</span>
                                     <p class="text-yellow-dark" style="font-size: 20px">assicurati che<br> sia tutto leggibile</p>
                                 </div>
-                                <div class="text-center col-3 col-sm-12 col-md-3">
+                                <div class="text-center col-sm-12 col-md-3">
                                     <img src="./images/risposta.svg" alt="risposta" style=" margin-bottom:20px; height: 200px">
                                     <span class="text-blue" style="display: block;font-weight: 600;font-size:18px;">3. Un nostro operatore<br> ti chiamerà<br> su Hangouts</span>
                                     <p class="text-yellow-dark" style="font-size: 20px">Preparati scaricando l'app<br> gratuita di Google</p>
                                 </div>
-                                <div class="text-center  col-3 col-sm-12 col-md-3 ">
+                                <div class="text-center col-sm-12 col-md-3 ">
                                     <img src="./images/portfolio.svg" alt="portfolio" style=" margin-bottom:20px; height: 200px">
                                     <span class="text-blue" style="display: block;font-weight: 600;font-size:18px;">4. Ricevi<br> il tuo<br> Prestito Fai da Te</span>
                                     <p class="text-yellow-dark" style="font-size: 20px">semplice, veloce<br> e conveniente</p>
@@ -407,61 +438,62 @@
                         <h2 class="sm-section-title-medium xs-section-title-large text-blue font-weight-600 alt-font xs-margin-fifteen-bottom tz-text" style="font-size:40px">PRESTITI PERSONALI E CESSIONE DEL QUINTO: FAQ</h2>
                         <p class="text-secondary margin-five-top margin-five-bottom" style="font-weight: 300;font-size:30px;"><i>Leggi le risposte alle domande più frequenti</i></p>
                         <div class="row padding-five-top">
-                            <div class="testimonial-style-custom owl-carousel owl-theme owl-dark-pagination owl-pagination-bottom" style="opacity: 1; display: block;">
+                            <div class="testimonial-style-custom " style="opacity: 1; display: block;">
                                 <!-- testimonial item -->
-                                <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 7146px; left: 0px; display: block; transition: all 400ms ease 0s; transform: translate3d(-397px, 0px, 0px);"><div class="owl-item" style="width: 397px;"><div class="item">
+                                <div class="row container">
+                                    <div class="owl-item col-md-12 col-sm-4 col-xs-12 xs-no-padding-15 text-center">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Quali documenti occorre presentare per la Cessione del Quinto?</p>
                                         <p class="text-secondary margin-five-top">Dipendenti: certificato di stipendio sottoscritto dall’amministrazione, ultima busta paga, ultimo
                                         CUD. Pensionati: certificato di quota cedibile sottoscritta dall’Ente Previdenziale, ultimo cedolino,
                                         ultimo CUD. Per entrambi: documento d’identità e tessera sanitaria.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Quanto tempo è necessario per ottenere la cessione del quinto?</p>
                                         <p class="text-secondary margin-five-top">All’atto dell’istruzione della pratica, dopo aver ricevuto il benestare da parte
                                         dell’Amministrazione di appartenenza, si eroga il finanziamento entro 10 giorni lavorativi.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Quali sono i costi da sostenere per accedere al prestito?</p>
                                         <p class="text-secondary margin-five-top">Commissioni ed interessi bancari, costi di istruttoria e di intermediazione, rimborso spese di
                                         notifica e postali, polizza assicurativa contro il rischio della perdita del posto di lavoro e
                                         contro la perdita della vita.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Come avviene il rimborso del finanziamento?</p>
                                         <p class="text-secondary margin-five-top">Il rimborso avviene tramite rate mensili costanti versate alla società finanziaria, trattenute
                                         dall’amministrazione di appartenenza direttamente dalla busta paga o cedolino pensione.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">È possibile saldare il debito anticipatamente?</p>
                                         <p class="text-secondary margin-five-top">Sì, è possibile saldare il debito anticipatamente e beneficiare del recupero con abbuono degli
                                         interessi non maturati.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Perché bisogna sottoscrivere una polizza assicurativa?</p>
                                         <p class="text-secondary margin-five-top">La polizza assicurativa è prevista dalla legge che disciplina questa forma di finanziamento
                                         (Legge 180/50 e Legge 14 maggio 2005, n. 80).</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">La rata e il tasso di interesse rimangono invariati per tutto il periodo del
                                         finanziamento?</p>
                                         <p class="text-secondary margin-five-top">Sì, la rata è fissa per tutta la durata del finanziamento che può essere da 24 a 120 mesi e il
                                         tasso rimane fisso per tutto il periodo di ammortamento del prestito.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Cosa succede se si ha già una cessione del quinto in corso?</p>
                                         <p class="text-secondary margin-five-top">La cessione in corso deve essere obbligatoriamente estinta. Il residuo debito viene detratto
                                         dal netto ricavo della nuova operazione e versato a favore dell’ente titolare del precedente
                                         prestito per la sua estinzione.</p>
                                     </div>
-                                </div></div><div class="owl-item" style="width: 397px;"><div class="item">
+                                </div></div><div class="owl-item col-md-4 col-sm-4 col-xs-12 xs-no-padding-15 text-center" ><div class="item">
                                     <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-15 text-center">
                                         <p class="text-secondary" style="font-weight:900">Qual è la differenza tra cessione del quinto e il classico prestito bancario?</p>
                                         <p class="text-secondary margin-five-top">Per la cessione del quinto non sono richieste garanzie. Basta avere un rapporto di lavoro a
@@ -510,8 +542,8 @@
                 <!-- FAQ SECTION SECTION /-->
                 <!-- FILIALI SECTION -->
                 <section class="bg-yellow border-none" id="section-filiali" data-gtm-vis-first-on-screen-30084985_28="2837184" data-gtm-vis-total-visible-time-30084985_28="5000" data-gtm-vis-has-fired-30084985_28="1">
-                    <div style="display: flex; flex-direction: row;" >
-                            <div class="xs-margin-twenty-three-bottom margin-five-top col-md-4" id="testofiliali" style="width: 35%">
+                    <div class="row" >
+                            <div class="xs-margin-twenty-three-bottom margin-five-top col-md-4" id="testofiliali">
                                 <div class="text-secondary text-black fsize23">
                                     <p class="fwthin fsize23 italic">Siamo il primo Intermediario del Credito in Italia a promuovere un’importante&nbsp;“alleanza con i consumatori” sottoscrivendo la&nbsp;“Carta dei Servizi”&nbsp; promossa dal Centro Studi Codacons. </p>
                                 </div>
@@ -531,7 +563,7 @@
                                 </div>
                             </div>
                             <!-- image -->
-                            <div class="img-filiali" style="background-image: url(/images/final-section.jpg);background-repeat: no-repeat; width: 65%; background-size: cover; background-position: center;"></div>
+                            <div class="img-filiali"></div>
                             <!-- image -->
                     </div>
                 </section>
@@ -566,51 +598,55 @@
                     </div>
                 </section>
                 <!-- FORM BOTTOM SECTION /-->
-                <!-- FELX BOTTO SECTION -->
-                <div class="flex-bottom-icon row" style="background-color: #6b767c">
-                    <div class="col-md-4 col-sm-12 text-center">
-                        <div class="row">
-                            <div class="col-4 text-right">
-                                <a href="tel:800821289" style="align-self: center"><img src="images/phone-call2.svg" style="height: 60px; width: 60px" alt=""></a>
+                <!-- FLEX BOTTO SECTION -->
+                <section id="icon-section">
+                    <div class="container-fluid" style="height: 100%">
+                    <div class="flex-bottom-icon row" style="background-color: #6b767c">
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <div class="row">
+                                <div class="col-4 text-right">
+                                    <a href="tel:800821289" style="align-self: center"><img src="images/phone-call2.svg" style="height: 60px; width: 60px" alt=""></a>
+                                </div>
+                                <div class="col-8 text-left">
+                                    <a href="tel:800821289">
+                                        <div class="text-center">
+                                            <p class="text-secondary text-white">Numero Verde Gratuito </p>
+                                            <p class="text-main text-yellow">800 82 12 89</p>
+                                            <p class="text-secondary text-white">dal lunedì al venerdì 9-13/14-18</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-8 text-left">
-                                <a href="tel:800821289">
-                                    <div class="text-center">
-                                        <p class="text-secondary text-white">Numero Verde Gratuito </p>
-                                        <p class="text-main text-yellow">800 82 12 89</p>
-                                        <p class="text-secondary text-white">dal lunedì al venerdì 9-13/14-18</p>
+                        </div>
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <div class="row">
+                                <div class="col-4 text-right">
+                                    <img src="images/placeholder.svg" style="height: 60px; width: 60px;align-self: center" alt="">
+                                </div>
+                                <div class="col-8 text-left">
+                                    <div style="text-align: left; margin-left: 20px; padding: 0; margin-top: 30px;;">
+                                        <p class="text-secondary text-white" style="font-weight: 800">La nostra sede è in
+                                        Via Renato Imbriani, 164 - 95128 Catania (CT). </p>
+                                        <p class="text-secondary text-white margin-two-top">Puoi trovarci anche in tutte le filiali del gruppo Credem presenti in Sicilia.</p>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12 text-center">
-                        <div class="row">
-                            <div class="col-4 text-right">
-                                <img src="images/placeholder.svg" style="height: 60px; width: 60px;align-self: center" alt="">
-                            </div>
-                            <div class="col-8 text-left">
-                                <div style="text-align: left; margin-left: 20px; padding: 0; margin-top: 30px;;">
-                                    <p class="text-secondary text-white" style="font-weight: 800">La nostra sede è in
-                                    Via Renato Imbriani, 164 - 95128 Catania (CT). </p>
-                                    <p class="text-secondary text-white margin-two-top">Puoi trovarci anche in tutte le filiali del gruppo Credem presenti in Sicilia.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12 text-center">
-                        <div class="row">
-                            <div class="col-4 text-right">
-                                <img src="images/envelope.svg" style="height: 60px; width: 60px;align-self: center" alt="">
-                            </div>
-                            <div class="col-8 text-left">
-                                <div style="text-align: left; margin-left: 20px; padding: 0; margin-top: 30px">
-                                    <p class="text-secondary text-white" style="font-weight: 800">Per ogni chiarimento scrivici all’indirizzo  servizioclienti@prestitifaidate.it </p>
-                                    <p class="text-secondary text-white">Il nostro servizio clienti è sempre a tua disposizione e ti risponderà il prima possibile. </p>
+                        <div class="col-md-4 col-sm-12 text-center">
+                            <div class="row">
+                                <div class="col-4 text-right">
+                                    <img src="images/envelope.svg" style="height: 60px; width: 60px;align-self: center" alt="">
                                 </div>
-                            </div>
+                                <div class="col-8 text-left">
+                                    <div style="text-align: left; margin-left: 20px; padding: 0; margin-top: 30px">
+                                        <p class="text-secondary text-white" style="font-weight: 800">Per ogni chiarimento scrivici all’indirizzo  servizioclienti@prestitifaidate.it </p>
+                                        <p class="text-secondary text-white">Il nostro servizio clienti è sempre a tua disposizione e ti risponderà il prima possibile. </p>
+                                    </div>
+                                </div>
+                        </div>
+                     </div>
                     </div>
-                </div>
+                </section>
                 <!-- FLEX BOTTOM SECTION /-->
                 <!-- ACCORDION -->
                 <div class="container">
@@ -619,11 +655,11 @@
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <a data-toggle="collapse" id="accordion-toggle" data-parent="#accordion" href="#collapseOne" class="">
+                                        <a data-toggle="collapse" id="accordion-toggle" data-parent="#accordion" href="#collapseOne" class="" aria-expanded="false">
                                             <h4 class="panel-title" style="color:#6B767C;">* NOTE DI TRASPARENZA 2021 <span style="float:right;" id="arrow-accordion"><img src="https://www.prestitifaidate.it/images/icons/down-arrow.svg" id="accordion-arrow" alt=""></span></h4>
                                         </a>
                                     </div>
-                                    <div id="collapseOne" class="panel-collapse in">
+                                    <div id="collapseOne" class="panel-collapse in show">
                                         <table class="table">
                                             <tbody><tr>
                                                 <td>

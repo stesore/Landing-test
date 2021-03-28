@@ -8,6 +8,7 @@ $color-6-hex: #838383;
 $color-7-hex: #8F8F8F;
 $color-8-hex: #E7F4EC;
 $color-error: #a94442;
+$color-black: #000;
 
 /* Color Theme Swatches in RGBA */
 $color-1-rgba: rgba(255,255,255, 1);
@@ -29,8 +30,8 @@ $media-mobile-max:  480px;
 $media-tablet-min:  481px;
 $media-tablet-max:  768px;
 $media-laptop-min:  769px;
-$media-laptop-max:  1024px;
-$media-desktop-min: 1025px;
+$media-laptop-max:  992px;
+$media-desktop-min: 993px;
 $media-desktop-max: 1200px;
 $media-extrascreen-min: 1201px;
 $media-extrascreen-max: 1920px;
